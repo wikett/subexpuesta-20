@@ -16,5 +16,9 @@ module.exports = {
   ],
   plugins: ['prettier'],
   // add your custom rules here
-  rules: {},
+  rules: {
+    'vue/no-v-html': 'off',
+    'nuxt/no-cjs-in-config': 'off',
+    'vue/attribute-hyphenation': 'off',
+  },
 }

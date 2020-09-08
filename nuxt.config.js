@@ -9,6 +9,12 @@ export default {
    ** See https://nuxtjs.org/api/configuration-target
    */
   target: 'static',
+  generate: {
+    subFolders: true,
+  },
+  router: {
+    base: '/',
+  },
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
@@ -24,7 +30,13 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://rsms.me/inter/inter.css',
+      },
+    ],
   },
   /*
    ** Global CSS
@@ -46,6 +58,7 @@ export default {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
   ],
   /*
    ** Nuxt.js modules
@@ -66,7 +79,7 @@ export default {
    ** Content module configuration
    ** See https://content.nuxtjs.org/configuration
    */
-  content: {},
+  content: { nestedProperties: ['author.name'] },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
