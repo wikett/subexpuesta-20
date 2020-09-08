@@ -10,6 +10,7 @@ export default {
    */
   target: 'static',
   generate: {
+    fallback: true,
     subFolders: true,
   },
   router: {
