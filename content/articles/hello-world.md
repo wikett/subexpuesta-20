@@ -3,6 +3,9 @@ title: Hello world
 description: How to write Hello World
 img: first-blog-post.jpg
 alt: my hello world
+category: Camaras
+category_url: camaras
+time_reading: 5
 author:
     name: Chuchi
     bio: All about Chuchi

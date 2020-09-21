@@ -1,6 +1,6 @@
 <template>
   <!-- This example requires Tailwind CSS v1.4.0+ -->
-  <div class="z-0 relative bg-white">
+  <div v-click-outside="closeMenu" class="z-1001 relative bg-white">
     <div class="relative z-10 shadow">
       <div
         class="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10"
@@ -9,8 +9,8 @@
           <a href="#" class="flex">
             <img
               class="h-8 w-auto sm:h-10"
-              src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
-              alt="Workflow"
+              src="https://res.cloudinary.com/djhqderty/image/upload/f_auto/v1599671277/subexpuesta/subexpuesta-transparente.png"
+              alt="subexpuesta.com"
             />
           </a>
         </div>
@@ -39,7 +39,7 @@
           class="hidden md:flex-1 md:flex md:items-center md:justify-between md:space-x-12"
         >
           <nav class="flex space-x-10">
-            <div class="relative">
+            <div v-if="false" class="relative">
               <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
               <button
                 type="button"
@@ -64,20 +64,20 @@
                 </svg>
               </button>
             </div>
-            <a
-              href="#"
+            <nuxt-link
+              to="/mapa-localizaciones"
               class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
             >
-              Pricing
-            </a>
+              Mapa de Localizaciones
+            </nuxt-link>
             <a
+              v-if="false"
               href="#"
               class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
             >
               Docs
             </a>
-            <div class="relative">
-              <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
+            <!-- <div class="relative">
               <button
                 type="button"
                 class="text-gray-500 group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
@@ -86,8 +86,7 @@
                   isSolutionOpened = false
                 "
               >
-                <span>Menu</span>
-                <!-- Item active: "text-gray-600", Item inactive: "text-gray-400" -->
+                <span>Blog</span>
                 <svg
                   class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150"
                   viewBox="0 0 20 20"
@@ -100,15 +99,15 @@
                   />
                 </svg>
               </button>
-            </div>
+            </div> -->
           </nav>
           <div class="flex items-center space-x-8">
-            <a
+            <!-- <a
               href="#"
               class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
             >
               Sign in
-            </a>
+            </a> 
             <span class="inline-flex rounded-md shadow-sm">
               <a
                 href="#"
@@ -117,6 +116,34 @@
                 Sign up
               </a>
             </span>
+            -->
+            <a href="https://www.facebook.com/subexpuesta/" target="_blank">
+              <img
+                class="object-contain w-8 h-8"
+                src="~/assets/img/icons8-facebook-50.png"
+              />
+            </a>
+            <a
+              href="https://www.instagram.com/subexpuesta_com/"
+              target="_blank"
+            >
+              <img
+                class="object-contain w-8 h-8"
+                src="~/assets/img/icons8-instagram-50.png"
+              />
+            </a>
+            <a href="https://twitter.com/subexpuesta_com" target="_blank">
+              <img
+                class="object-contain w-8 h-8"
+                src="~/assets/img/icons8-twitter-50.png"
+              />
+            </a>
+            <a href="https://telegram.me/subexpuesta" target="_blank">
+              <img
+                class="object-contain w-8 h-8"
+                src="~/assets/img/icons8-telegram-app-50.png"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -365,7 +392,7 @@
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>View all products</span>
+              <span>Únete a nuestras RRSS</span>
             </a>
           </div>
           <div class="flow-root">
@@ -404,7 +431,7 @@
       From: "opacity-100 translate-y-0"
       To: "opacity-0 -translate-y-1"
   -->
-    <div
+    <!-- <div
       v-if="isMenuOpened"
       class="hidden md:block absolute inset-x-0 transform shadow-lg"
     >
@@ -697,7 +724,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!--
     Mobile menu, show/hide based on mobile menu state.
@@ -711,7 +738,7 @@
   -->
     <div
       v-if="isMobileOpened"
-      class="absolute z-20 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+      class="absolute z-1001 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
     >
       <div class="rounded-lg shadow-lg">
         <div class="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
@@ -719,9 +746,9 @@
             <div class="flex items-center justify-between">
               <div>
                 <img
-                  class="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark-on-white.svg"
-                  alt="Workflow"
+                  class="h-8 w-auto sm:h-10"
+                  src="https://res.cloudinary.com/djhqderty/image/upload/f_auto/v1599671277/subexpuesta/subexpuesta-transparente.png"
+                  alt="subexpuesta.com"
                 />
               </div>
               <div class="-mr-2">
@@ -751,113 +778,35 @@
                 <div
                   class="grid gap-7 sm:grid-cols-2 sm:row-gap-8 sm:col-gap-4"
                 >
-                  <a
-                    href="#"
+                  <nuxt-link
+                    to="/mapa-localizaciones"
                     class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
                   >
                     <div
-                      class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                      class="text-base leading-6 font-medium text-gray-900"
+                      @click="isMobileOpened = false"
                     >
-                      <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                        />
-                      </svg>
+                      🌍 Mapa de Localizaciones
                     </div>
-                    <div class="text-base leading-6 font-medium text-gray-900">
-                      Analytics
-                    </div>
-                  </a>
-                  <a
-                    href="#"
+                  </nuxt-link>
+                  <!-- <nuxt-link
+                    to="/blog"
                     class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
                   >
                     <div
-                      class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                      class="text-base leading-6 font-medium text-gray-900"
+                      @click="isMobileOpened = false"
                     >
-                      <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
-                        />
-                      </svg>
+                      🕵 Blog
                     </div>
-                    <div class="text-base leading-6 font-medium text-gray-900">
-                      Engagement
-                    </div>
-                  </a>
-                  <a
-                    href="#"
-                    class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                  >
-                    <div
-                      class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
-                    >
-                      <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                        />
-                      </svg>
-                    </div>
-                    <div class="text-base leading-6 font-medium text-gray-900">
-                      Security
-                    </div>
-                  </a>
-                  <a
-                    href="#"
-                    class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                  >
-                    <div
-                      class="flex-shrink-0 flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
-                    >
-                      <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                        />
-                      </svg>
-                    </div>
-                    <div class="text-base leading-6 font-medium text-gray-900">
-                      Integrations
-                    </div>
-                  </a>
+                  </nuxt-link> -->
                 </div>
                 <div class="text-base leading-6">
                   <a
                     href="#"
                     class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150"
                   >
-                    View all products &rarr;
+                    Únete a nuestras redes sociales &rarr;
                   </a>
                 </div>
               </nav>
@@ -866,43 +815,51 @@
           <div class="py-6 px-5 space-y-6">
             <div class="grid grid-cols-2 gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/subexpuesta/"
+                target="_blank"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
               >
-                Pricing
+                <img
+                  class="object-contain w-10 h-10 mx-auto"
+                  src="~/assets/img/icons8-facebook-50.png"
+                  alt="Únete a Facebook"
+                />
               </a>
               <a
-                href="#"
+                href="https://twitter.com/subexpuesta_com"
+                target="_blank"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
               >
-                Docs
+                <img
+                  class="object-contain w-10 h-10 mx-auto"
+                  src="~/assets/img/icons8-twitter-50.png"
+                  alt="Únete a Twitter"
+                />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/subexpuesta_com/"
+                target="_blank"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
               >
-                Company
+                <img
+                  class="object-contain w-10 h-10 mx-auto"
+                  src="~/assets/img/icons8-instagram-50.png"
+                  alt="Únete a Instagram"
+                />
               </a>
               <a
-                href="#"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-600 transition ease-in-out duration-150"
+                href="https://telegram.me/subexpuesta"
+                target="_blank"
+                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
               >
-                Resources
-              </a>
-              <a
-                href="#"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-600 transition ease-in-out duration-150"
-              >
-                Blog
-              </a>
-              <a
-                href="#"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-600 transition ease-in-out duration-150"
-              >
-                Contact Sales
+                <img
+                  class="object-contain w-10 h-10 mx-auto"
+                  src="~/assets/img/icons8-telegram-app-50.png"
+                  alt="Únete a Telegram"
+                />
               </a>
             </div>
-            <div class="space-y-6">
+            <!-- <div class="space-y-6">
               <span class="w-full flex rounded-md shadow-sm">
                 <a
                   href="#"
@@ -922,7 +879,7 @@
                   Sign in
                 </a>
               </p>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -931,13 +888,26 @@
 </template>
 
 <script>
+import vClickOutside from 'v-click-outside'
+
 export default {
+  name: 'OHeader',
+  directives: {
+    clickOutside: vClickOutside.directive,
+  },
   data() {
     return {
       isSolutionOpened: false,
       isMenuOpened: false,
       isMobileOpened: false,
+      isOpenMenu: false,
     }
+  },
+  methods: {
+    closeMenu() {
+      this.isSolutionOpened = false
+      this.isMenuOpened = false
+    },
   },
 }
 </script>

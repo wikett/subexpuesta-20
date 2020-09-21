@@ -1,8 +1,11 @@
 ---
-title: My first Blog Post
+title: Hola Mundo!
 description: Learning how to use @nuxt/content to create a blog
 img: first-blog-post.jpg
 alt: my first blog post
+category: Linternas
+category_url: linternas
+time_reading: 8
 author:
     name: Benjamin
     bio: All about Benjamin
