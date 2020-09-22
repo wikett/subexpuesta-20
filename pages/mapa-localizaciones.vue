@@ -266,6 +266,19 @@
         </li>
       </ul>
     </div>
+    <div class="mt-4 mx-auto">
+      <iframe
+        src="https://rcm-eu.amazon-adsystem.com/e/cm?o=30&p=48&l=ez&f=ifr&linkID=e5529d122ac498da54c22470d207e495&t=subexpuesta00-21&tracking_id=subexpuesta00-21"
+        class="mx-auto"
+        width="728"
+        height="90"
+        scrolling="no"
+        border="0"
+        marginwidth="0"
+        style="border: none"
+        frameborder="0"
+      ></iframe>
+    </div>
   </div>
 </template>
 
