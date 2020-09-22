@@ -62,6 +62,7 @@ export default {
     { src: '@/plugins/leaflet.js', mode: 'client' },
     { src: '~/plugins/seo.js' },
     '~/plugins/jsonld',
+    '~/plugins/gtm',
   ],
   /*
    ** Auto import components

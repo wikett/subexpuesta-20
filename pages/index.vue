@@ -61,6 +61,9 @@
 </template>
 <script>
 export default {
+  middleware(ctx) {
+    ctx.$gtm.push({ event: 'ssr' })
+  },
   head: {
     title: 'Subexpuesta.com | Comunidad sobre fotografía nocturna',
     meta: [
