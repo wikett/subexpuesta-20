@@ -53,24 +53,19 @@ fs.writeFile(
   function (err) {
     if (err) throw err
     listado.forEach((item) => {
-      const newUrl = {}
-      newUrl.url = {
-        loc:
-          'https://www.subexpuesta.com/localizaciones/' +
-          item.id +
-          '/' +
-          convertSEO(item.titulo),
-        lastmod: formatDate(item.fechaToma),
-        changefreq: 'monthly',
-        priority: 0.8,
-      }
-      const xml = xmlParser.toXml(newUrl)
+      const newUrl =
+        'https://www.subexpuesta.com/localizaciones/' +
+        item.id +
+        '/' +
+        convertSEO(item.titulo)
+      const xml = `<url><loc>${newUrl}</loc><lastmod>${formatDate(
+        item.fechaToma
+      )}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
       fs.appendFile('./static/sitemap.xml', xml, function (err) {
         if (err) {
           // append failed
         } else {
-          // done
-          console.log(`${item.titulo}: completado`)
+          console.log(item.titulo + ' completado')
         }
       })
     })
