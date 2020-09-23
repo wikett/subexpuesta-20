@@ -315,7 +315,7 @@ export default {
       },
       showMap: true,
       isLoaded: false,
-      fullUrl: 'https://www.subexpuesta.com/' + this.$nuxt.$route.path,
+      fullUrl: 'https://www.subexpuesta.com' + this.$nuxt.$route.path,
     }
   },
   mounted() {

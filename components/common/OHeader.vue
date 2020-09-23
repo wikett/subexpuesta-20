@@ -9,7 +9,7 @@
           <a href="#" class="flex">
             <img
               class="h-8 w-auto sm:h-10"
-              src="https://res.cloudinary.com/djhqderty/image/upload/f_auto/v1599671277/subexpuesta/subexpuesta-transparente.png"
+              src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,w_148/v1599671277/subexpuesta/subexpuesta-transparente.png"
               alt="subexpuesta.com"
             />
           </a>
@@ -77,7 +77,7 @@
             >
               Docs
             </a>
-            <!-- <div class="relative">
+            <div class="relative">
               <button
                 type="button"
                 class="text-gray-500 group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
@@ -87,7 +87,7 @@
                 "
               >
                 <span>Blog</span>
-                <svg
+                <!-- <svg
                   class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150"
                   viewBox="0 0 20 20"
                   fill="currentColor"
@@ -97,9 +97,9 @@
                     d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                     clip-rule="evenodd"
                   />
-                </svg>
+                </svg> -->
               </button>
-            </div> -->
+            </div>
           </nav>
           <div class="flex items-center space-x-8">
             <!-- <a
@@ -789,7 +789,7 @@
                       🌍 Mapa de Localizaciones
                     </div>
                   </nuxt-link>
-                  <!-- <nuxt-link
+                  <nuxt-link
                     to="/blog"
                     class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
                   >
@@ -799,7 +799,7 @@
                     >
                       🕵 Blog
                     </div>
-                  </nuxt-link> -->
+                  </nuxt-link>
                 </div>
                 <div class="text-base leading-6">
                   <a
@@ -907,6 +907,7 @@ export default {
     closeMenu() {
       this.isSolutionOpened = false
       this.isMenuOpened = false
+      this.isMobileOpened = false
     },
   },
 }

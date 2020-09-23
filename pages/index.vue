@@ -36,14 +36,14 @@
                 Ver mapa
               </nuxt-link>
             </div>
-            <!-- <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
               <nuxt-link
                 to="/blog"
                 class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:text-lg md:px-10"
               >
                 Leer el blog
               </nuxt-link>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
