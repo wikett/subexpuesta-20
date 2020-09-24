@@ -104,11 +104,29 @@
         >
           <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
             <div class="flex-shrink-0">
-              <img
-                class="h-48 w-full object-cover"
-                :src="article.img"
-                :alt="article.title"
-              />
+              <picture>
+                <source
+                  media="(min-width:730px)"
+                  :srcset="getResponsiveImage(article.img, '730')"
+                />
+                <source
+                  media="(min-width:706px)"
+                  :srcset="getResponsiveImage(article.img, '706')"
+                />
+                <source
+                  media="(min-width:560px)"
+                  :srcset="getResponsiveImage(article.img, '560')"
+                />
+                <source
+                  media="(min-width:411px)"
+                  :srcset="getResponsiveImage(article.img, '411')"
+                />
+                <img
+                  class="w-full rounded-lg"
+                  :srcset="getResponsiveImage(article.img, '360')"
+                  :alt="article.title"
+                />
+              </picture>
             </div>
             <div class="flex-1 bg-white p-6 flex flex-col justify-between">
               <div class="flex-1">
@@ -166,6 +184,9 @@ export default {
     }
   },
   methods: {
+    getResponsiveImage(cloudinaryId, size) {
+      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_${size}/v1/${cloudinaryId}`
+    },
     formatDate(date, local) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString(local, options)

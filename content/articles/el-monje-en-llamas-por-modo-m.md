@@ -1,7 +1,7 @@
 ---
 title: El monje en llamas
 description: Creación de un personaje para fotografía nocturna paso a paso
-img: https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_730/v1/subexpuesta/i8itpnnscnewfatn0mse
+img: subexpuesta/i8itpnnscnewfatn0mse
 category: Fotografía nocturna
 url_location: /localizaciones/56052249d0ff10030029b155/el-monje-en-llamas
 category_url: fotografia-nocturna

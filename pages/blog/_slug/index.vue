@@ -131,13 +131,33 @@
             {{ formatDate(article.date_published) }}
           </p>
         </div>
+
         <figure>
-          <img
-            class="w-full rounded-lg"
-            :src="article.img"
-            :alt="article.title"
-            width="730"
-          />
+          <a :href="getUrlImage()" target="_blank">
+            <picture>
+              <source
+                media="(min-width:730px)"
+                :srcset="getResponsiveImage(article.img, '730')"
+              />
+              <source
+                media="(min-width:706px)"
+                :srcset="getResponsiveImage(article.img, '706')"
+              />
+              <source
+                media="(min-width:560px)"
+                :srcset="getResponsiveImage(article.img, '560')"
+              />
+              <source
+                media="(min-width:411px)"
+                :srcset="getResponsiveImage(article.img, '411')"
+              />
+              <img
+                class="w-full rounded-lg"
+                :srcset="getResponsiveImage(article.img, '360')"
+                :alt="article.description"
+              />
+            </picture>
+          </a>
           <figcaption class="flex mt-2 ml-4 text-sm text-gray-500">
             <svg
               class="flex-none w-5 h-5 mr-2 text-gray-400"
@@ -159,7 +179,7 @@
           </figcaption>
         </figure>
       </div>
-      <div class="post-content prose prose-lg text-gray-500 mx-auto">
+      <div class="post-content prose prose-lg text-gray-600 mx-auto">
         <nuxt-content :document="article" />
         <div class="flex text-right">
           <ShareNetwork
@@ -170,6 +190,7 @@
             :media="article.img"
           >
             <button
+              name="Facebook"
               class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
             >
               <img
@@ -186,6 +207,7 @@
             :description="article.description"
           >
             <button
+              name="Twitter"
               class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
             >
               <img
@@ -202,6 +224,7 @@
             :description="article.description"
           >
             <button
+              name="Telegram"
               class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
             >
               <img
@@ -218,6 +241,7 @@
             :description="article.description"
           >
             <button
+              name="Whatsapp"
               class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
             >
               <img
@@ -386,6 +410,12 @@ export default {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('es', options)
     },
+    getUrlImage() {
+      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto/v1/${this.article.img}`
+    },
+    getResponsiveImage(cloudinaryId, size) {
+      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_${size}/v1/${cloudinaryId}`
+    },
   },
   head() {
     return {
@@ -408,7 +438,7 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: this.article.img,
+          content: this.getResponsiveImage(this.article.img, '1200'),
         },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         {
@@ -424,7 +454,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: this.$nuxt.$route.fullPath,
+          content: 'https://www.subexpuesta.com' + this.$nuxt.$route.fullPath,
         },
         {
           hide: 'twitter:card',
@@ -439,7 +469,7 @@ export default {
         {
           hide: 'twitter:image',
           name: 'twitter:image',
-          content: this.article.img,
+          content: this.getResponsiveImage(this.article.img, '1200'),
         },
         {
           hide: 'twitter:title',
@@ -462,10 +492,10 @@ export default {
       '@type': 'NewsArticle',
       mainEntityOfPage: {
         '@type': 'WebPage',
-        '@id': this.$nuxt.$route.fullPath,
+        '@id': 'https://www.subexpuesta.com' + this.$nuxt.$route.fullPath,
       },
       headline: this.article.title,
-      image: ['this.article.img'],
+      image: [`${this.getResponsiveImage(this.article.img, '1200')}`],
       datePublished: this.article.date_published,
       dateModified: this.article.date_published,
       author: {
@@ -488,10 +518,10 @@ export default {
 <style lang="postcss">
 .post-content > div > div {
   & > p {
-    @apply text-lg leading-7 text-gray-500 mb-5;
+    @apply text-lg leading-7 text-gray-700 mb-5;
   }
   & > ul {
-    @apply text-lg leading-7 text-gray-500 mb-5;
+    @apply text-lg leading-7 text-gray-700 mb-5;
   }
 }
 </style>
