@@ -375,6 +375,18 @@ export default {
           '🌍 Mapa con más de 1000 localizaciones para fotografía tanto nocturna, de paisaje, lightpainting o de larga duración.',
       },
     ],
+    link: [
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css',
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css',
+      },
+    ],
   },
 }
 </script>

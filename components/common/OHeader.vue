@@ -86,7 +86,7 @@
                   isSolutionOpened = false
                 "
               >
-                <span>Blog</span>
+                <nuxt-link to="/blog"> <span>Blog</span></nuxt-link>
                 <!-- <svg
                   class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150"
                   viewBox="0 0 20 20"

@@ -34,18 +34,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
-        rel: 'stylesheet',
+        rel: 'preconnect',
         href: 'https://rsms.me/inter/inter.css',
-      },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.css',
-      },
-      {
-        rel: 'stylesheet',
-        href:
-          'https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.4.1/MarkerCluster.Default.css',
       },
     ],
   },
@@ -73,7 +63,7 @@ export default {
    ** Nuxt.js dev-modules
    */
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
+    '@nuxtjs/pwa',
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/gtm',
@@ -84,7 +74,6 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     'nuxt-leaflet',
@@ -95,6 +84,17 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
+  pwa: {
+    meta: {
+      title: 'subexpuesta.com',
+      author: 'Quique Aparicio',
+    },
+    manifest: {
+      name: 'Comunidad para fotógrafos nocturnos',
+      short_name: 'Subexpuesta.com',
+      lang: 'es',
+    },
+  },
   axios: {},
   cloudinary: {
     cloudName: 'djhqderty',

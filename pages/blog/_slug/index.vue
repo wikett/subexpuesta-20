@@ -136,7 +136,7 @@
             class="w-full rounded-lg"
             :src="article.img"
             :alt="article.title"
-            width="1200"
+            width="730"
           />
           <figcaption class="flex mt-2 ml-4 text-sm text-gray-500">
             <svg
