@@ -277,8 +277,9 @@
                   >
                     {{ article.exif.camera }}
                   </p>
+
                   <a
-                    v-else
+                    v-if="article.exif.camera_url"
                     :href="article.exif.camera_url"
                     class="text-blue-400 underline"
                     target="_blank"
@@ -480,6 +481,12 @@ export default {
           hide: 'twitter:description',
           name: 'twitter:description',
           content: this.article.description,
+        },
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://www.subexpuesta.com${this.$route.path}`,
         },
       ],
     }

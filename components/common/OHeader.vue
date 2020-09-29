@@ -6,7 +6,7 @@
         class="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10"
       >
         <div>
-          <a href="#" class="flex">
+          <a href="/" class="flex">
             <img
               class="h-8 w-auto sm:h-10"
               src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,w_148/v1599671277/subexpuesta/subexpuesta-transparente.png"
@@ -65,7 +65,7 @@
               </button>
             </div>
             <nuxt-link
-              to="/mapa-localizaciones"
+              to="/mapa-localizaciones/"
               class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
             >
               Mapa de Localizaciones
@@ -86,7 +86,7 @@
                   isSolutionOpened = false
                 "
               >
-                <nuxt-link to="/blog"> <span>Blog</span></nuxt-link>
+                <nuxt-link to="/blog/"> <span>Blog</span></nuxt-link>
                 <!-- <svg
                   class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150"
                   viewBox="0 0 20 20"
@@ -779,7 +779,7 @@
                   class="grid gap-7 sm:grid-cols-2 sm:row-gap-8 sm:col-gap-4"
                 >
                   <nuxt-link
-                    to="/mapa-localizaciones"
+                    to="/mapa-localizaciones/"
                     class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
                   >
                     <div
@@ -790,7 +790,7 @@
                     </div>
                   </nuxt-link>
                   <nuxt-link
-                    to="/blog"
+                    to="/blog/"
                     class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
                   >
                     <div
@@ -817,18 +817,21 @@
               <a
                 href="https://www.facebook.com/subexpuesta/"
                 target="_blank"
+                rel="nofollow"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
               >
                 <img
                   class="object-contain w-10 h-10 mx-auto"
                   src="~/assets/img/icons8-facebook-50.png"
                   alt="Únete a Facebook"
+                  rel="nofollow"
                 />
               </a>
               <a
                 href="https://twitter.com/subexpuesta_com"
                 target="_blank"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                rel="nofollow"
               >
                 <img
                   class="object-contain w-10 h-10 mx-auto"
@@ -840,6 +843,7 @@
                 href="https://www.instagram.com/subexpuesta_com/"
                 target="_blank"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                rel="nofollow"
               >
                 <img
                   class="object-contain w-10 h-10 mx-auto"
@@ -851,6 +855,7 @@
                 href="https://telegram.me/subexpuesta"
                 target="_blank"
                 class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                rel="nofollow"
               >
                 <img
                   class="object-contain w-10 h-10 mx-auto"

@@ -15,6 +15,7 @@ export default {
   },
   router: {
     base: '/',
+    trailingSlash: true,
   },
   /*
    ** Headers of the page
@@ -50,6 +51,7 @@ export default {
   plugins: [
     { src: '@/plugins/vClickOutside', mode: 'client' },
     { src: '@/plugins/leaflet.js', mode: 'client' },
+    { src: '@/plugins/vuelazy.js', mode: 'client' },
     { src: '~/plugins/seo.js' },
     '~/plugins/jsonld',
     '~/plugins/gtm',
@@ -109,7 +111,16 @@ export default {
    ** Content module configuration
    ** See https://content.nuxtjs.org/configuration
    */
-  content: { nestedProperties: ['author.name'] },
+  content: {
+    nestedProperties: ['author.name'],
+    markdown: {
+      remarkPlugins: ['remark-emoji'],
+      remarkExternalLinks: {
+        target: '_blank',
+        rel: 'nofollow',
+      },
+    },
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

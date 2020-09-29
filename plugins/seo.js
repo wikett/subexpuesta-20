@@ -28,11 +28,13 @@ export default (context, inject) => {
   const convertSEO = (text) => {
     if (text)
       return (
-        eliminarcaracteres(text)
-          .replace(/[-\s]+/g, '-') // convert spaces to hyphens
-          .replace(/[^-\w\s]/g, '') // remove unneeded chars
-          .replace(/^\s+|\s+$/g, '') + ''
-      ).toLowerCase() // trim leading/trailing spaces
+        (
+          eliminarcaracteres(text)
+            .replace(/[-\s]+/g, '-') // convert spaces to hyphens
+            .replace(/[^-\w\s]/g, '') // remove unneeded chars
+            .replace(/^\s+|\s+$/g, '') + ''
+        ).toLowerCase() + '/'
+      ) // trim leading/trailing spaces
   }
   inject('convertSEO', convertSEO)
   context.$convertSEO = convertSEO

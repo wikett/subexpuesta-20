@@ -274,7 +274,7 @@
           </iframe>
         </div>
         <div class="w-full mt-4 mx-auto">
-          <nuxt-link to="/mapa-localizaciones">
+          <nuxt-link to="/mapa-localizaciones/">
             <button
               type="button"
               class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-teal-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-500 focus:shadow-outline-teal transition ease-in-out duration-150 sm:text-sm sm:leading-5"
@@ -436,7 +436,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: this.$nuxt.$route.fullPath,
+          content: `https://www.subexpuesta.com${this.$route.path}`,
         },
 
         // Twitter Meta Tags, if they are missing then these are replaced by OG tags
@@ -465,6 +465,12 @@ export default {
           hide: 'twitter:description',
           name: 'twitter:description',
           content: this.loc.acceso,
+        },
+      ],
+      link: [
+        {
+          rel: 'canonical',
+          href: `https://www.subexpuesta.com${this.$route.path}`,
         },
       ],
     }
