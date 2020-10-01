@@ -64,12 +64,7 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: [
-    '@nuxtjs/pwa',
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/gtm',
-  ],
+  buildModules: ['@nuxtjs/pwa', '@nuxtjs/eslint-module', '@nuxtjs/tailwindcss'],
   /*
    ** Nuxt.js modules
    */
@@ -78,9 +73,11 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+    '@nuxtjs/gtm',
     'nuxt-leaflet',
     '@nuxtjs/cloudinary',
     'vue-social-sharing/nuxt',
+    'cookie-universal-nuxt',
   ],
   /*
    ** Axios module configuration
@@ -105,7 +102,7 @@ export default {
   gtm: {
     enabled: true, // Siempre activo por si queremos debuguear en dev o stagging
     layer: 'dataLayer',
-    id: 'GTM-T7WLXS6',
+    autoInit: false,
   },
   /*
    ** Content module configuration

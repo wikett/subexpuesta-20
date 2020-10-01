@@ -1,7 +1,6 @@
 'use strict'
 
 const fs = require('fs')
-const xmlParser = require('xml2json')
 const listado = require('../assets/data/localizaciones.json')
 
 function eliminaracento(letra) {
@@ -32,11 +31,13 @@ function eliminarcaracteres(text) {
 function convertSEO(text) {
   if (text)
     return (
-      eliminarcaracteres(text)
-        .replace(/[-\s]+/g, '-') // convert spaces to hyphens
-        .replace(/[^-\w\s]/g, '') // remove unneeded chars
-        .replace(/^\s+|\s+$/g, '') + ''
-    ).toLowerCase() // trim leading/trailing spaces
+      (
+        eliminarcaracteres(text)
+          .replace(/[-\s]+/g, '-') // convert spaces to hyphens
+          .replace(/[^-\w\s]/g, '') // remove unneeded chars
+          .replace(/^\s+|\s+$/g, '') + ''
+      ).toLowerCase() + '/'
+    ) // trim leading/trailing spaces
 }
 
 function formatDate(fechaToma) {

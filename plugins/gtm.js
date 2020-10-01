@@ -1,3 +1,3 @@
 export default function ({ $gtm }) {
-  $gtm.init('GTM-T7WLXS6')
+  // $gtm.init('GTM-T7WLXS6')
 }
