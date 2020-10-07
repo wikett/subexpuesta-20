@@ -86,11 +86,11 @@
             </div>
           </div>
           <div
-            class="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto"
+            class="order-3 mt-2 flex-shrink-0 w-full pl-2 sm:order-2 sm:mt-0 sm:w-auto"
           >
             <div class="rounded-md shadow-sm">
               <button
-                class="flex items-center w-full justify-center px-4 py-2 border border-gray-700 text-sm leading-5 font-medium rounded-md text-gray-200 bg-gray-600 hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
+                class="flex items-center justify-center px-4 py-2 border border-gray-700 text-sm leading-5 font-medium rounded-md text-gray-200 bg-gray-600 hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
                 @click="manageCookies = true"
               >
                 Configurar Cookies
@@ -103,7 +103,7 @@
             <div class="rounded-md shadow-sm">
               <button
                 href="#"
-                class="flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
+                class="flex items-center w-full justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:shadow-outline transition ease-in-out duration-150"
                 @click="accept()"
               >
                 Aceptar

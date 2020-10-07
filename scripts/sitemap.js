@@ -2,6 +2,7 @@
 
 const fs = require('fs')
 const listado = require('../assets/data/localizaciones.json')
+const usuarios = require('../assets/data/usuarios.json')
 
 function eliminaracento(letra) {
   switch (letra) {
@@ -70,6 +71,28 @@ fs.writeFile(
         }
       })
     })
+
+    usuarios.forEach((usuario) => {
+      if (
+        listado.find((item) => {
+          return item.autor === usuario.username
+        })
+      ) {
+        // console.log(`Usuario: ${usuario.username} tiene localizaciones`)
+        const userUrl = `https://www.subexpuesta.com/usuario/${usuario.username}/`
+
+        const userXml = `<url><loc>${userUrl}</loc><lastmod>${formatDate(
+          Date.now()
+        )}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+        fs.appendFile('./static/sitemap.xml', userXml, function (err) {
+          if (err) throw err
+          else {
+            console.log(`Usuario ${usuario.username} añadido correctamente`)
+          }
+        })
+      }
+    })
+
     fs.appendFile('./static/sitemap.xml', '</urlset>', function (err) {
       if (err) {
         // append failed

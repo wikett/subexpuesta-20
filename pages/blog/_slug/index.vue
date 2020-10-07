@@ -13,11 +13,11 @@
     </div> -->
   <!-- This component requires Tailwind CSS >= 1.5.1 and @tailwindcss/ui >= 0.4.0 -->
 
-  <div class="relative py-16 bg-white overflow-hidden">
+  <div class="relative py-16 overflow-hidden bg-white">
     <div class="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
-      <div class="relative h-full text-lg max-w-prose mx-auto">
+      <div class="relative h-full mx-auto text-lg max-w-prose">
         <svg
-          class="absolute top-12 left-full transform translate-x-32"
+          class="absolute transform translate-x-32 top-12 left-full"
           width="404"
           height="384"
           fill="none"
@@ -49,7 +49,7 @@
           />
         </svg>
         <svg
-          class="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
+          class="absolute transform -translate-x-32 -translate-y-1/2 top-1/2 right-full"
           width="404"
           height="384"
           fill="none"
@@ -81,7 +81,7 @@
           />
         </svg>
         <svg
-          class="absolute bottom-12 left-full transform translate-x-32"
+          class="absolute transform translate-x-32 bottom-12 left-full"
           width="404"
           height="384"
           fill="none"
@@ -115,19 +115,19 @@
       </div>
     </div>
     <div class="relative px-4 sm:px-6 lg:px-8">
-      <div class="text-lg max-w-prose mx-auto mb-6">
+      <div class="mx-auto mb-6 text-lg max-w-prose">
         <p
-          class="text-base text-center leading-6 text-indigo-600 font-semibold tracking-wide uppercase"
+          class="text-base font-semibold leading-6 tracking-wide text-center text-indigo-600 uppercase"
         >
           {{ article.category }}
         </p>
         <h1
-          class="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+          class="mt-2 mb-8 text-3xl font-extrabold leading-8 tracking-tight text-center text-gray-900 sm:text-4xl sm:leading-10"
         >
           {{ article.title }}
         </h1>
         <div class="flex w-full">
-          <p class="w-full text-right text-sm text-gray-500">
+          <p class="w-full text-sm text-right text-gray-500">
             {{ formatDate(article.date_published) }}
           </p>
         </div>
@@ -172,16 +172,17 @@
             </svg>
             Fotografía por {{ article.author.name }}.
             <nuxt-link
-              class="text-blue-400 underline ml-2"
+              class="ml-2 text-blue-400 underline"
               :to="article.url_location"
               >Ver localización</nuxt-link
             >
           </figcaption>
         </figure>
       </div>
-      <div class="post-content prose prose-lg text-gray-600 mx-auto">
+      <div class="mx-auto prose prose-lg text-gray-600 post-content">
         <nuxt-content :document="article" />
         <div class="flex text-right">
+          <span class="mt-4 text-sm text-right">------</span>
           <ShareNetwork
             network="facebook"
             :url="fullUrl"
@@ -191,7 +192,7 @@
           >
             <button
               name="Facebook"
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-10 h-10"
@@ -208,7 +209,7 @@
           >
             <button
               name="Twitter"
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-10 h-10"
@@ -225,7 +226,7 @@
           >
             <button
               name="Telegram"
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-10 h-10"
@@ -242,7 +243,7 @@
           >
             <button
               name="Whatsapp"
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-10 h-10"
@@ -255,67 +256,46 @@
       </div>
       <div v-if="article.exif.camera" class="bg-gray-50">
         <div
-          class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
+          class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8"
         >
           <h2
-            class="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10"
+            class="text-3xl font-extrabold leading-9 text-gray-900 sm:text-4xl sm:leading-10"
           >
             Datos exif
           </h2>
-          <div class="mt-6 border-t-2 border-gray-200 pt-6">
+          <div class="pt-6 mt-6 border-t-2 border-gray-200">
             <dl>
               <div class="md:grid md:grid-cols-12 md:gap-8">
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   Camara
                 </dt>
                 <dd class="mt-2 md:mt-0 md:col-span-7">
-                  <p
-                    v-if="!article.exif.camera_url"
-                    class="text-base leading-6 text-gray-500"
-                  >
+                  <p class="text-base leading-6 text-gray-500">
                     {{ article.exif.camera }}
                   </p>
-
-                  <a
-                    v-if="article.exif.camera_url"
-                    :href="article.exif.camera_url"
-                    class="text-blue-400 underline"
-                    target="_blank"
-                    >{{ article.exif.camera }}</a
-                  >
                 </dd>
               </div>
               <div
-                class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
               >
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   Objetivo
                 </dt>
                 <dd class="mt-2 md:mt-0 md:col-span-7">
-                  <p
-                    v-if="!article.exif.objetivo_url"
-                    class="text-base leading-6 text-gray-500"
-                  >
+                  <p class="text-base leading-6 text-gray-500">
                     {{ article.exif.objetivo }}
                   </p>
-                  <a
-                    v-else
-                    :href="article.exif.objetivo_url"
-                    class="text-blue-400 underline"
-                    target="_blank"
-                    >{{ article.exif.objetivo }}</a
-                  >
                 </dd>
               </div>
               <div
-                class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
               >
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   Exposición
                 </dt>
@@ -326,10 +306,10 @@
                 </dd>
               </div>
               <div
-                class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
               >
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   Apertura
                 </dt>
@@ -340,10 +320,10 @@
                 </dd>
               </div>
               <div
-                class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
               >
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   ISO
                 </dt>
@@ -355,10 +335,10 @@
               </div>
               <div
                 v-if="article.exif.procesado"
-                class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
               >
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   Procesado
                 </dt>
@@ -370,10 +350,10 @@
               </div>
               <div
                 v-if="article.url_location"
-                class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
               >
                 <dt
-                  class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                  class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                 >
                   Localización
                 </dt>

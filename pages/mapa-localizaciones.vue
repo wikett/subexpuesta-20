@@ -1,14 +1,14 @@
 <template>
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="py-12 bg-white">
-      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-screen-xl px-4 mx-auto sm:px-6 lg:px-8">
         <div class="lg:text-center">
           <h1
-            class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
+            class="mt-2 text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl sm:leading-10"
           >
             Mapa de localizaciones para fotografia nocturna
           </h1>
-          <p class="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
+          <p class="max-w-2xl mt-4 text-xl leading-7 text-gray-500 lg:mx-auto">
             Más de 1000
             <strong class="text-bold">localizaciones para fotografía</strong>
             tanto nocturna, de paisaje, lightpainting o de larga duración.
@@ -44,20 +44,10 @@
         </div>
       </div>
     </div>
-    <div v-if="modalIsOpen" class="fixed z-1001 inset-0 overflow-y-auto">
+    <div v-if="modalIsOpen" class="fixed inset-0 overflow-y-auto z-1001">
       <div
-        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+        class="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0"
       >
-        <!--
-      Background overlay, show/hide based on modal state.
-
-      Entering: "ease-out duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
         <div class="fixed inset-0 transition-opacity">
           <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
         </div>
@@ -65,32 +55,22 @@
         <!-- This element is to trick the browser into centering the modal contents. -->
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span
         >&#8203;
-        <!--
-      Modal panel, show/hide based on modal state.
-
-      Entering: "ease-out duration-300"
-        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        To: "opacity-100 translate-y-0 sm:scale-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100 translate-y-0 sm:scale-100"
-        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-    -->
         <div
-          class="inline-block align-bottom bg-gray-900 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+          class="inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-gray-900 rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
           role="dialog"
           aria-modal="true"
           aria-labelledby="modal-headline"
         >
-          <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
+          <div class="absolute top-0 right-0 hidden pt-4 pr-4 sm:block">
             <button
               type="button"
-              class="text-gray-400 hover:text-gray-500 focus:outline-none focus:text-gray-500 transition ease-in-out duration-150"
+              class="text-gray-400 transition duration-150 ease-in-out hover:text-gray-500 focus:outline-none focus:text-gray-500"
               aria-label="Close"
               @click="modalIsOpen = false"
             >
               <!-- Heroicon name: x -->
               <svg
-                class="h-6 w-6"
+                class="w-6 h-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -105,34 +85,17 @@
             </button>
           </div>
           <div class="sm:flex sm:items-start">
-            <!-- <div
-              class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
-            >
-              <svg
-                class="h-6 w-6 text-red-600"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                />
-              </svg>
-            </div> -->
             <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
               <h3
                 id="modal-headline"
-                class="text-lg leading-6 font-medium text-gray-300"
+                class="text-lg font-medium leading-6 text-gray-300"
               >
                 {{ activeLocation.titulo }}
               </h3>
               <div class="mt-2">
                 <div v-show="!isLoaded">
                   <img
-                    class="object-contain h-52 w-full"
+                    class="object-contain w-full h-52"
                     src="~/assets/img/Eclipse-1s-200px.gif"
                   />
                 </div>
@@ -140,7 +103,7 @@
                   <img
                     v-show="isLoaded"
                     name="fade"
-                    class="object-fit w-full"
+                    class="w-full object-fit"
                     :src="activeImage"
                     @load="onImgLoad"
                   />
@@ -160,7 +123,7 @@
               >
                 <button
                   type="button"
-                  class="inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-teal-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-500 focus:shadow-outline-teal transition ease-in-out duration-150 sm:text-sm sm:leading-5 md:ml-4"
+                  class="inline-flex justify-center px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-teal-700 border border-transparent rounded-md shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-500 focus:shadow-outline-teal sm:text-sm sm:leading-5 md:ml-4"
                 >
                   Ver localización
                 </button>
@@ -168,11 +131,11 @@
             </span>
 
             <span
-              class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
+              class="flex w-full mt-3 rounded-md shadow-sm sm:mt-0 sm:w-auto"
             >
               <button
                 type="button"
-                class="inline-flex justify-center rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+                class="inline-flex justify-center px-4 py-2 text-base font-medium leading-6 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue sm:text-sm sm:leading-5"
                 @click="modalIsOpen = false"
               >
                 Cerrar
@@ -182,7 +145,7 @@
           <div>
             <span class="flex w-full rounded-md shadow-sm sm:w-auto md:ml-4">
               <nuxt-link
-                class="text-sm text-teal-500 underline text-right"
+                class="text-sm text-right text-teal-500 underline"
                 :to="getSeoUrl(activeLocation.id, activeLocation.titulo)"
                 target="_blank"
               >
@@ -198,7 +161,7 @@
         <li>
           <div class="flex">
             <div class="ml-4">
-              <h4 class="text-lg leading-6 font-medium text-gray-900">
+              <h4 class="text-lg font-medium leading-6 text-gray-900">
                 👥 Comparte con la comunidad
               </h4>
               <p class="mt-2 text-base leading-6 text-gray-500">
@@ -211,7 +174,7 @@
         <li class="mt-10 md:mt-0">
           <div class="flex">
             <div class="ml-4">
-              <h4 class="text-lg leading-6 font-medium text-gray-900">
+              <h4 class="text-lg font-medium leading-6 text-gray-900">
                 🕵️‍♀️ Explora nuevas localizaciones
               </h4>
               <p class="mt-2 text-base leading-6 text-gray-500">
@@ -224,8 +187,8 @@
         </li>
         <li class="mt-10 md:mt-0">
           <div class="flex">
-            <div class="ml-4 mt-4">
-              <h4 class="text-lg leading-6 font-medium text-gray-900">
+            <div class="mt-4 ml-4">
+              <h4 class="text-lg font-medium leading-6 text-gray-900">
                 🌈 Nuestras categorías
               </h4>
               <p class="mt-2 text-base leading-6 text-gray-500">
@@ -246,15 +209,15 @@
         </li>
         <li class="mt-10 md:mt-0">
           <div class="flex">
-            <div class="ml-4 mt-4">
-              <h4 class="text-lg leading-6 font-medium text-gray-900">
+            <div class="mt-4 ml-4">
+              <h4 class="text-lg font-medium leading-6 text-gray-900">
                 📱 Comunidad siempre viva
               </h4>
               <p class="mt-2 text-base leading-6 text-gray-500">
                 Únete a nuestra comunidad de
                 <a
                   href="https://telegram.me/subexpuesta"
-                  class="underline text-blue-500"
+                  class="text-blue-500 underline"
                   target="_blank"
                   >Telegram</a
                 >

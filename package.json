@@ -9,6 +9,7 @@
     "script": "node ./scripts/loca.js",
     "sitemap": "node ./scripts/sitemap.js",
     "users": "node ./scripts/users.js",
+    "redirect": "node ./scripts/redirects.js",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js"

@@ -1,44 +1,49 @@
 <template>
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div v-show="!isLoaded">
       <img
-        class="object-contain h-32 w-full"
+        class="object-contain w-full h-32"
         src="~/assets/img/Eclipse-1s-200px.gif"
       />
     </div>
     <div class="content-center">
-      <img
-        class="object-fit h-128 w-full mt-4 max-h-3/4 max-w-lg mx-auto"
-        :src="getCloudinaryUrl(loc.cloudinaryId)"
-        @load="onImgLoad"
-      />
+      <a :href="getUrlImage()" target="_blank">
+        <img
+          class="w-full max-w-lg mx-auto mt-4 object-fit h-128 max-h-3/4"
+          :src="getCloudinaryUrl(loc.cloudinaryId)"
+          @load="onImgLoad"
+        />
+      </a>
     </div>
     <!-- <div class="content-center">
       <img
-        class="object-fit h-128 w-full mt-4 max-h-3/4 max-w-lg mx-auto"
+        class="w-full max-w-lg mx-auto mt-4 object-fit h-128 max-h-3/4"
         :src="fullCloudinary"
         @load="onImgLoad"
       />
     </div> -->
     <div class="flex flex-wrap mb-4">
-      <div class="w-full sm:w-full lg:w-1/2 h-auto">
+      <div class="w-full h-auto sm:w-full lg:w-1/2">
         <div class="bg-gray-50">
           <div
-            class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8"
+            class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8"
           >
             <h1
-              class="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10"
+              class="text-3xl font-extrabold leading-9 text-gray-900 sm:text-4xl sm:leading-10"
             >
               {{ loc.titulo }}
             </h1>
             <span class="text-base text-gray-600">
-              por <strong class="text-bold">{{ loc.autor }}</strong></span
+              por
+              <nuxt-link :to="getUrlAuthor()"
+                ><strong class="text-bold">{{ loc.autor }}</strong></nuxt-link
+              ></span
             >
-            <div class="mt-6 border-t-2 border-gray-200 pt-6">
+            <div class="pt-6 mt-6 border-t-2 border-gray-200">
               <dl>
                 <div class="md:grid md:grid-cols-12 md:gap-8">
                   <dt
-                    class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                    class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                   >
                     Acceso
                   </dt>
@@ -61,10 +66,10 @@
                   </dd>
                 </div>
                 <div
-                  class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                  class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
                 >
                   <dt
-                    class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                    class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                   >
                     Coordenadas
                   </dt>
@@ -85,10 +90,10 @@
                 </div>
                 <div
                   v-if="loc.categoria"
-                  class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                  class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
                 >
                   <dt
-                    class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                    class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                   >
                     Categoría
                   </dt>
@@ -100,10 +105,10 @@
                 </div>
                 <div
                   v-if="loc.tags.length > 0"
-                  class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                  class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
                 >
                   <dt
-                    class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                    class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                   >
                     Tags
                   </dt>
@@ -118,10 +123,10 @@
                   </dd>
                 </div>
                 <div
-                  class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                  class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
                 >
                   <dt
-                    class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                    class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                   >
                     Fecha de la toma
                   </dt>
@@ -132,10 +137,10 @@
                   </dd>
                 </div>
                 <div
-                  class="mt-8 border-t border-gray-200 pt-6 md:grid md:grid-cols-12 md:gap-8"
+                  class="pt-6 mt-8 border-t border-gray-200 md:grid md:grid-cols-12 md:gap-8"
                 >
                   <dt
-                    class="text-base leading-6 font-medium text-gray-900 md:col-span-5"
+                    class="text-base font-medium leading-6 text-gray-900 md:col-span-5"
                   >
                     Localización
                   </dt>
@@ -151,7 +156,7 @@
         </div>
       </div>
       <div
-        class="w-full sm:w-full lg:w-1/2 h-auto px-2 py-2 lg:px-8 lg:py-8 lg:mt-12"
+        class="w-full h-auto px-2 py-2 sm:w-full lg:w-1/2 lg:px-8 lg:py-8 lg:mt-12"
       >
         <div id="map-wrap" class="z-10" style="height: 60vh">
           <client-only>
@@ -177,7 +182,7 @@
             :media="fullCloudinary"
           >
             <button
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-8 h-8"
@@ -195,7 +200,7 @@
             :hashtags="fullTags"
           >
             <button
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-8 h-8"
@@ -213,7 +218,7 @@
             :hashtags="fullTags"
           >
             <button
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-8 h-8"
@@ -231,7 +236,7 @@
             :hashtags="fullTags"
           >
             <button
-              class="bg-white-300 hover:border-blue-600 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              class="inline-flex items-center px-4 py-2 font-bold text-gray-800 rounded bg-white-300 hover:border-blue-600"
             >
               <img
                 class="object-contain w-8 h-8"
@@ -241,43 +246,11 @@
             </button>
           </ShareNetwork>
         </div>
-        <div class="flex w-full mt-4 mx-auto">
-          <iframe
-            style="width: 120px; height: 240px"
-            marginwidth="0"
-            class="mx-auto"
-            marginheight="0"
-            scrolling="no"
-            frameborder="0"
-            src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=tf_til&t=subexpuesta00-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=B07H9J1YXN&linkId=d24690e682a2e078abea2a1e86cca790&bc1=000000&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr"
-          >
-          </iframe>
-          <iframe
-            style="width: 120px; height: 240px"
-            class="mx-auto"
-            marginwidth="0"
-            marginheight="0"
-            scrolling="no"
-            frameborder="0"
-            src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=subexpuesta00-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=B01N6JCW8F&linkId=3923db4216962b25fb7f77d217b1a789&bc1=000000&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr"
-          >
-          </iframe>
-          <iframe
-            style="width: 120px; height: 240px"
-            class="mx-auto"
-            marginwidth="0"
-            marginheight="0"
-            scrolling="no"
-            frameborder="0"
-            src="https://rcm-eu.amazon-adsystem.com/e/cm?ref=qf_sp_asin_til&t=subexpuesta00-21&m=amazon&o=30&p=8&l=as1&IS1=1&asins=B08B9C149J&linkId=fb1d06fbf71e99ce5b9c0ea21839bc6a&bc1=000000&lt1=_blank&fc1=333333&lc1=0066c0&bg1=ffffff&f=ifr"
-          >
-          </iframe>
-        </div>
-        <div class="w-full mt-4 mx-auto">
+        <div class="w-full mx-auto mt-4">
           <nuxt-link to="/mapa-localizaciones/">
             <button
               type="button"
-              class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-teal-700 text-base leading-6 font-medium text-white shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-500 focus:shadow-outline-teal transition ease-in-out duration-150 sm:text-sm sm:leading-5"
+              class="inline-flex justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-teal-700 border border-transparent rounded-md shadow-sm hover:bg-teal-500 focus:outline-none focus:border-teal-500 focus:shadow-outline-teal sm:text-sm sm:leading-5"
             >
               Volver al mapa
             </button>
@@ -323,6 +296,9 @@ export default {
     // this.fullUrl = this.$nuxt.$route.fullPath
   },
   methods: {
+    getUrlAuthor() {
+      return `/usuario/${this.loc.autor}/`
+    },
     getFecha() {
       const fecha = new Date(this.loc.fechaToma.$date)
       const options = {
@@ -336,6 +312,9 @@ export default {
     },
     getMapsUrl() {
       return `https://www.google.es/maps/@${this.loc.latitud},${this.loc.longitud},15z`
+    },
+    getUrlImage() {
+      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto/v1/${this.loc.cloudinaryId}`
     },
     getImagen(imagenCloud) {
       console.log(`getImagen`)
@@ -382,11 +361,6 @@ export default {
       this.isLoaded = true
     },
     getCloudinaryUrl(idCloudinary) {
-      console.log(`getCloudinaryUrl`)
-      console.log(idCloudinary)
-      // if (!idCloudinary.includes('subexpuesta')) {
-      //   idCloudinary = 'subexpuesta/' + idCloudinary
-      // }
       return this.$cloudinary().url(idCloudinary, {
         width: 1200,
         fetchFormat: 'auto',
@@ -400,7 +374,13 @@ export default {
   },
   head() {
     return {
+      title: `${this.loc.titulo} - Subexpuesta.com`,
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: `📷 Localización fotográfica: ${this.loc.titulo} por ${this.loc.autor}. Contaminación lumnínica: ${this.loc.contaminacionLuminica} / 10 Peligrosidad de la zona: ${this.loc.peligrosidad} / 10`,
+        },
         // OG Meta Tags
         {
           hid: 'fb:app_id',
