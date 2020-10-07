@@ -33,7 +33,9 @@ fs.writeFile('./static/_redirects', '', function (err) {
       })
     ) {
       // console.log(`Usuario: ${usuario.username} tiene localizaciones`)
-      const redirection = `/${usuario.username}\t/usuario/${usuario.username}/\n`
+      const redirection = `/${encodeURI(
+        usuario.username
+      )}\t/usuario/${encodeURI(usuario.username)}/\n`
       fs.appendFile('./static/_redirects', redirection, function (err) {
         if (err) throw err
         else {
