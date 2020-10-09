@@ -1,6 +1,6 @@
 ---
 title: El monje en llamas
-description: Creación de un personaje para fotografía nocturna paso a paso
+description: Creación de un personaje para fotografía nocturna paso a paso por Sergio Valero, grupo fotográfico Modo-M
 img: subexpuesta/i8itpnnscnewfatn0mse
 main_picture: subexpuesta/ytchu0p9nqi4vx5a3g8g
 category: Fotografía nocturna

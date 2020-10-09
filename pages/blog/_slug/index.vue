@@ -400,7 +400,17 @@ export default {
   },
   head() {
     return {
+      title:
+        this.article.title +
+        ' por ' +
+        this.article.author.name +
+        ' | Blog de Subexpuesta.com',
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.description,
+        },
         {
           hid: 'fb:app_id',
           property: 'fb:app_id',

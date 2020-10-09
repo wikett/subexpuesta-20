@@ -69,9 +69,7 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     '@nuxtjs/gtm',
     'nuxt-leaflet',

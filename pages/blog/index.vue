@@ -192,5 +192,16 @@ export default {
       return new Date(date).toLocaleDateString(local, options)
     },
   },
+  head: {
+    title: 'Blog de Subexpuesta.com',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Descubre nuestros artículos sobre fotografía nocturna, fotografía de móvil o cómo se hizo',
+      },
+    ],
+  },
 }
 </script>

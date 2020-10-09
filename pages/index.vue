@@ -65,9 +65,9 @@ export default {
     const loc = await $content('localizaciones').fetch()
     return { loc }
   },
-  middleware(ctx) {
-    ctx.$gtm.push({ event: 'ssr' })
-  },
+  // middleware(ctx) {
+  //   ctx.$gtm.push({ event: 'ssr' })
+  // },
   head: {
     title: 'Subexpuesta.com | Comunidad sobre fotografía nocturna',
     meta: [
@@ -75,7 +75,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'Comunidad de fotografos especializada en fotografía nocturna. Consulta nuestro Mapa con más de 1000 localizaciones fotográficas.',
+          'Localizaciones de fotografía nocturna. Únete a nuestra comunidad de noctógrafos donde siempre se aprende algo nuevo :)',
       },
     ],
   },
