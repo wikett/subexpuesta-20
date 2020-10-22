@@ -38,6 +38,11 @@ export default {
         rel: 'preconnect',
         href: 'https://rsms.me/inter/inter.css',
       },
+      {
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+        'data-ad-client': 'ca-pub-7593479892835011',
+        async: true,
+      },
     ],
   },
   /*
@@ -76,7 +81,39 @@ export default {
     '@nuxtjs/cloudinary',
     'vue-social-sharing/nuxt',
     'cookie-universal-nuxt',
+    '@nuxtjs/firebase',
   ],
+  firebase: {
+    config: {
+      apiKey: process.env.FIRE_APIKEY,
+      authDomain: process.env.FIRE_AUTHDOMAIN,
+      databaseURL: process.env.FIRE_DATABASEURL,
+      projectId: process.env.FIRE_PROJECTID,
+      storageBucket: process.env.FIRE_STORAGEBUCKET,
+      messagingSenderId: process.env.FIRE_MESSAGINGSENDERID,
+      appId: process.env.FIRE_APPID,
+      measurementId: process.env.FIRE_MEASUREMENTEID,
+      // apiKey: 'AIzaSyDtoVj-IKmzQaN0RPnoq6zCwnWUMOfym78',
+      // authDomain: 'subexpuesta-20.firebaseapp.com',
+      // databaseURL: 'https://subexpuesta-20.firebaseio.com',
+      // projectId: 'subexpuesta-20',
+      // storageBucket: 'subexpuesta-20.appspot.com',
+      // messagingSenderId: '172764956314',
+      // appId: '1:172764956314:web:48b880cb104da77ed28123',
+      // measurementId: 'G-GCTEP53C6S',
+    },
+    onFirebaseHosting: false,
+    services: {
+      auth: {
+        persistence: 'local', // default
+        initialize: {
+          onAuthStateChangedAction: 'onAuthStateChangedAction',
+        },
+        ssr: false, // default
+      },
+      firestore: true,
+    },
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -90,6 +127,10 @@ export default {
       name: 'Comunidad para fotógrafos nocturnos',
       short_name: 'Subexpuesta.com',
       lang: 'es',
+    },
+    workbox: {
+      importScripts: ['/firebase-auth-sw.js'],
+      dev: false,
     },
   },
   axios: {},

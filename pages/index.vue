@@ -65,6 +65,7 @@ export default {
     const loc = await $content('localizaciones').fetch()
     return { loc }
   },
+  methods: {},
   // middleware(ctx) {
   //   ctx.$gtm.push({ event: 'ssr' })
   // },

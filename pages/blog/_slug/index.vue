@@ -158,7 +158,10 @@
               />
             </picture>
           </a>
-          <figcaption class="flex mt-2 ml-4 text-sm text-gray-500">
+          <figcaption
+            v-if="article.url_location"
+            class="flex mt-2 ml-4 text-sm text-gray-500"
+          >
             <svg
               class="flex-none w-5 h-5 mr-2 text-gray-400"
               viewBox="0 0 20 20"
@@ -178,11 +181,37 @@
             >
           </figcaption>
         </figure>
+        <!--
+  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
+  Read the documentation to get started: https://tailwindui.com/documentation
+-->
+        <div class="mt-4 overflow-hidden bg-white shadow sm:rounded-lg">
+          <div class="px-4 py-5 sm:px-6">
+            <p class="text-lg font-medium leading-6 text-gray-900">Contenido</p>
+          </div>
+          <div class="px-4 py-5 sm:p-0">
+            <dl>
+              <div
+                v-for="(link, index) of article.toc"
+                :key="link.id"
+                class="mt-8 sm:mt-0 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5"
+              >
+                <NuxtLink :to="`#${link.id}`">
+                  <dt class="text-sm font-medium leading-5 text-gray-500">
+                    {{ index + 1 }}. {{ link.text }}
+                  </dt>
+                </NuxtLink>
+              </div>
+            </dl>
+          </div>
+        </div>
       </div>
       <div class="mx-auto prose prose-lg text-gray-600 post-content">
         <nuxt-content :document="article" />
         <div class="flex text-right">
-          <span class="mt-4 text-sm text-right">------</span>
+          <span class="mt-4 text-sm text-right"
+            >------ Comparte este artículo</span
+          >
           <ShareNetwork
             network="facebook"
             :url="fullUrl"
@@ -254,7 +283,7 @@
           </ShareNetwork>
         </div>
       </div>
-      <div v-if="article.exif.camera" class="bg-gray-50">
+      <div v-if="article.exif" class="bg-gray-50">
         <div
           class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:py-16 lg:px-8"
         >

@@ -1,27 +1,27 @@
 <template>
   <!-- This example requires Tailwind CSS v1.4.0+ -->
-  <div v-click-outside="closeMenu" class="z-1001 relative bg-white">
+  <div v-click-outside="closeMenu" class="relative bg-white z-1001">
     <div class="relative z-10 shadow">
       <div
-        class="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10"
+        class="flex items-center justify-between px-4 py-5 mx-auto max-w-7xl sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10"
       >
         <div>
-          <a href="/" class="flex">
+          <nuxt-link to="/" class="flex">
             <img
-              class="h-8 w-auto sm:h-10"
+              class="w-auto h-8 sm:h-10"
               src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,w_148/v1599671277/subexpuesta/subexpuesta-transparente.png"
               alt="subexpuesta.com"
             />
-          </a>
+          </nuxt-link>
         </div>
-        <div class="-mr-2 -my-2 md:hidden">
+        <div class="-my-2 -mr-2 md:hidden">
           <button
             type="button"
-            class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+            class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
             @click="isMobileOpened = true"
           >
             <svg
-              class="h-6 w-6"
+              class="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -43,7 +43,7 @@
               <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
               <button
                 type="button"
-                class="text-gray-500 group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                class="inline-flex items-center space-x-2 text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out group hover:text-gray-900 focus:outline-none focus:text-gray-900"
                 @click="
                   isSolutionOpened = !isSolutionOpened
                   isMenuOpened = false
@@ -52,7 +52,7 @@
                 <span>Solutions</span>
                 <!-- Item active: "text-gray-600", Item inactive: "text-gray-400" -->
                 <svg
-                  class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150"
+                  class="w-5 h-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -66,21 +66,21 @@
             </div>
             <nuxt-link
               to="/mapa-localizaciones/"
-              class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+              class="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
             >
               Mapa de Localizaciones
             </nuxt-link>
             <a
               v-if="false"
               href="#"
-              class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+              class="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
             >
               Docs
             </a>
             <div class="relative">
               <button
                 type="button"
-                class="text-gray-500 group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
+                class="inline-flex items-center space-x-2 text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out group hover:text-gray-900 focus:outline-none focus:text-gray-900"
                 @click="
                   isMenuOpened = !isMenuOpened
                   isSolutionOpened = false
@@ -88,7 +88,7 @@
               >
                 <nuxt-link to="/blog/"> <span>Blog</span></nuxt-link>
                 <!-- <svg
-                  class="text-gray-400 h-5 w-5 group-hover:text-gray-500 group-focus:text-gray-500 transition ease-in-out duration-150"
+                  class="w-5 h-5 text-gray-400 transition duration-150 ease-in-out group-hover:text-gray-500 group-focus:text-gray-500"
                   viewBox="0 0 20 20"
                   fill="currentColor"
                 >
@@ -102,21 +102,6 @@
             </div>
           </nav>
           <div class="flex items-center space-x-8">
-            <!-- <a
-              href="#"
-              class="text-base leading-6 font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
-            >
-              Sign in
-            </a> 
-            <span class="inline-flex rounded-md shadow-sm">
-              <a
-                href="#"
-                class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
-              >
-                Sign up
-              </a>
-            </span>
-            -->
             <a href="https://www.facebook.com/subexpuesta/" target="_blank">
               <img
                 class="object-contain w-8 h-8"
@@ -144,6 +129,20 @@
                 src="~/assets/img/icons8-telegram-app-50.png"
               />
             </a>
+            <!-- <a
+              href="#"
+              class="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
+            >
+              Subir localización
+            </a>
+            <span class="inline-flex rounded-md shadow-sm">
+              <a
+                href="#"
+                class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+              >
+                Inicia sesión
+              </a>
+            </span> -->
           </div>
         </div>
       </div>
@@ -162,25 +161,25 @@
   -->
     <div
       v-if="isSolutionOpened"
-      class="hidden md:block absolute inset-x-0 transform shadow-lg"
+      class="absolute inset-x-0 hidden transform shadow-lg md:block"
     >
       <div class="bg-white">
         <div
-          class="max-w-7xl mx-auto grid row-gap-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
+          class="grid row-gap-6 px-4 py-6 mx-auto max-w-7xl sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16"
         >
           <a
             href="#"
-            class="-m-3 p-3 flex flex-col justify-between space-y-6 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+            class="flex flex-col justify-between p-3 -m-3 space-y-6 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
           >
             <div
-              class="space-x-4 flex md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
+              class="flex space-x-4 md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
             >
               <div class="flex-shrink-0">
                 <span
-                  class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                  class="inline-flex items-center justify-center w-10 h-10 text-white bg-indigo-500 rounded-md sm:h-12 sm:w-12"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -198,7 +197,7 @@
                 class="space-y-2 md:flex-1 md:flex md:flex-col md:justify-between lg:space-y-4"
               >
                 <div class="space-y-1">
-                  <p class="text-base leading-6 font-medium text-gray-900">
+                  <p class="text-base font-medium leading-6 text-gray-900">
                     Analytics
                   </p>
                   <p class="text-sm leading-5 text-gray-500">
@@ -206,7 +205,7 @@
                     from.
                   </p>
                 </div>
-                <p class="text-sm leading-5 font-medium text-indigo-600">
+                <p class="text-sm font-medium leading-5 text-indigo-600">
                   Learn more &rarr;
                 </p>
               </div>
@@ -214,17 +213,17 @@
           </a>
           <a
             href="#"
-            class="-m-3 p-3 flex flex-col justify-between space-y-6 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+            class="flex flex-col justify-between p-3 -m-3 space-y-6 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
           >
             <div
-              class="space-x-4 flex md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
+              class="flex space-x-4 md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
             >
               <div class="flex-shrink-0">
                 <span
-                  class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                  class="inline-flex items-center justify-center w-10 h-10 text-white bg-indigo-500 rounded-md sm:h-12 sm:w-12"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -242,14 +241,14 @@
                 class="space-y-2 md:flex-1 md:flex md:flex-col md:justify-between lg:space-y-4"
               >
                 <div class="space-y-1">
-                  <p class="text-base leading-6 font-medium text-gray-900">
+                  <p class="text-base font-medium leading-6 text-gray-900">
                     Engagement
                   </p>
                   <p class="text-sm leading-5 text-gray-500">
                     Speak directly to your customers in a more meaningful way.
                   </p>
                 </div>
-                <p class="text-sm leading-5 font-medium text-indigo-600">
+                <p class="text-sm font-medium leading-5 text-indigo-600">
                   Learn more &rarr;
                 </p>
               </div>
@@ -257,17 +256,17 @@
           </a>
           <a
             href="#"
-            class="-m-3 p-3 flex flex-col justify-between space-y-6 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+            class="flex flex-col justify-between p-3 -m-3 space-y-6 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
           >
             <div
-              class="space-x-4 flex md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
+              class="flex space-x-4 md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
             >
               <div class="flex-shrink-0">
                 <span
-                  class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                  class="inline-flex items-center justify-center w-10 h-10 text-white bg-indigo-500 rounded-md sm:h-12 sm:w-12"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -285,14 +284,14 @@
                 class="space-y-2 md:flex-1 md:flex md:flex-col md:justify-between lg:space-y-4"
               >
                 <div class="space-y-1">
-                  <p class="text-base leading-6 font-medium text-gray-900">
+                  <p class="text-base font-medium leading-6 text-gray-900">
                     Security
                   </p>
                   <p class="text-sm leading-5 text-gray-500">
                     Your customer data will be safe and secure.
                   </p>
                 </div>
-                <p class="text-sm leading-5 font-medium text-indigo-600">
+                <p class="text-sm font-medium leading-5 text-indigo-600">
                   Learn more &rarr;
                 </p>
               </div>
@@ -300,17 +299,17 @@
           </a>
           <a
             href="#"
-            class="-m-3 p-3 flex flex-col justify-between space-y-6 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+            class="flex flex-col justify-between p-3 -m-3 space-y-6 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
           >
             <div
-              class="space-x-4 flex md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
+              class="flex space-x-4 md:h-full lg:flex-col lg:space-x-0 lg:space-y-4"
             >
               <div class="flex-shrink-0">
                 <span
-                  class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12"
+                  class="inline-flex items-center justify-center w-10 h-10 text-white bg-indigo-500 rounded-md sm:h-12 sm:w-12"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -328,14 +327,14 @@
                 class="space-y-2 md:flex-1 md:flex md:flex-col md:justify-between lg:space-y-4"
               >
                 <div class="space-y-1">
-                  <p class="text-base leading-6 font-medium text-gray-900">
+                  <p class="text-base font-medium leading-6 text-gray-900">
                     Integrations
                   </p>
                   <p class="text-sm leading-5 text-gray-500">
                     Connect with third-party tools that you're already using.
                   </p>
                 </div>
-                <p class="text-sm leading-5 font-medium text-indigo-600">
+                <p class="text-sm font-medium leading-5 text-indigo-600">
                   Learn more &rarr;
                 </p>
               </div>
@@ -345,15 +344,15 @@
       </div>
       <div class="bg-gray-50">
         <div
-          class="max-w-7xl mx-auto space-y-6 px-4 py-5 sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8"
+          class="px-4 py-5 mx-auto space-y-6 max-w-7xl sm:flex sm:space-y-0 sm:space-x-10 sm:px-6 lg:px-8"
         >
           <div class="flow-root">
             <a
               href="#"
-              class="-m-3 p-3 space-x-3 flex items-center rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150"
+              class="flex items-center p-3 -m-3 space-x-3 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
             >
               <svg
-                class="flex-shrink-0 h-6 w-6 text-gray-400"
+                class="flex-shrink-0 w-6 h-6 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -377,10 +376,10 @@
           <div class="flow-root">
             <a
               href="#"
-              class="-m-3 p-3 space-x-3 flex items-center rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150"
+              class="flex items-center p-3 -m-3 space-x-3 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
             >
               <svg
-                class="flex-shrink-0 h-6 w-6 text-gray-400"
+                class="flex-shrink-0 w-6 h-6 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -398,10 +397,10 @@
           <div class="flow-root">
             <a
               href="#"
-              class="-m-3 p-3 space-x-3 flex items-center rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-100 transition ease-in-out duration-150"
+              class="flex items-center p-3 -m-3 space-x-3 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-100"
             >
               <svg
-                class="flex-shrink-0 h-6 w-6 text-gray-400"
+                class="flex-shrink-0 w-6 h-6 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -433,19 +432,19 @@
   -->
     <!-- <div
       v-if="isMenuOpened"
-      class="hidden md:block absolute inset-x-0 transform shadow-lg"
+      class="absolute inset-x-0 hidden transform shadow-lg md:block"
     >
       <div class="absolute inset-0 flex">
-        <div class="bg-white w-1/2"></div>
-        <div class="bg-gray-50 w-1/2"></div>
+        <div class="w-1/2 bg-white"></div>
+        <div class="w-1/2 bg-gray-50"></div>
       </div>
-      <div class="relative max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2">
+      <div class="relative grid grid-cols-1 mx-auto max-w-7xl lg:grid-cols-2">
         <nav
           class="grid row-gap-10 px-4 py-8 bg-white sm:grid-cols-2 sm:col-gap-8 sm:py-12 sm:px-6 lg:px-8 xl:pr-12"
         >
           <div class="space-y-5">
             <h3
-              class="text-sm leading-5 font-medium tracking-wide text-gray-500 uppercase"
+              class="text-sm font-medium leading-5 tracking-wide text-gray-500 uppercase"
             >
               Company
             </h3>
@@ -453,10 +452,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -474,10 +473,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -495,10 +494,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -516,10 +515,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -537,10 +536,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -559,7 +558,7 @@
           </div>
           <div class="space-y-5">
             <h3
-              class="text-sm leading-5 font-medium tracking-wide text-gray-500 uppercase"
+              class="text-sm font-medium leading-5 tracking-wide text-gray-500 uppercase"
             >
               Resources
             </h3>
@@ -567,10 +566,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -588,10 +587,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -609,10 +608,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -630,10 +629,10 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex items-center space-x-4 rounded-md text-base leading-6 font-medium text-gray-900 hover:bg-gray-50 transition ease-in-out duration-150"
+                  class="flex items-center p-3 -m-3 space-x-4 text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:bg-gray-50"
                 >
                   <svg
-                    class="flex-shrink-0 h-6 w-6 text-gray-400"
+                    class="flex-shrink-0 w-6 h-6 text-gray-400"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -652,11 +651,11 @@
           </div>
         </nav>
         <div
-          class="space-y-6 bg-gray-50 px-4 py-8 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
+          class="px-4 py-8 space-y-6 bg-gray-50 sm:py-12 sm:px-6 lg:px-8 xl:pl-12"
         >
           <div class="space-y-6">
             <h3
-              class="text-sm leading-5 font-medium tracking-wide text-gray-500 uppercase"
+              class="text-sm font-medium leading-5 tracking-wide text-gray-500 uppercase"
             >
               From the blog
             </h3>
@@ -664,18 +663,18 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex rounded-lg hover:bg-gray-100 transition ease-in-out duration-150 sm:space-x-8"
+                  class="flex p-3 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-100 sm:space-x-8"
                 >
-                  <div class="hidden sm:block flex-shrink-0">
+                  <div class="flex-shrink-0 hidden sm:block">
                     <img
-                      class="w-32 h-20 object-cover rounded-md"
+                      class="object-cover w-32 h-20 rounded-md"
                       src="https://images.unsplash.com/photo-1558478551-1a378f63328e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2849&q=80"
                       alt=""
                     />
                   </div>
-                  <div class="space-y-1 w-0 flex-1">
+                  <div class="flex-1 w-0 space-y-1">
                     <h4
-                      class="text-base leading-6 font-medium text-gray-900 truncate"
+                      class="text-base font-medium leading-6 text-gray-900 truncate"
                     >
                       Boost your conversion rate
                     </h4>
@@ -689,18 +688,18 @@
               <li class="flow-root">
                 <a
                   href="#"
-                  class="-m-3 p-3 flex rounded-lg hover:bg-gray-100 transition ease-in-out duration-150 sm:space-x-8"
+                  class="flex p-3 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-100 sm:space-x-8"
                 >
-                  <div class="hidden sm:block flex-shrink-0">
+                  <div class="flex-shrink-0 hidden sm:block">
                     <img
-                      class="w-32 h-20 object-cover rounded-md"
+                      class="object-cover w-32 h-20 rounded-md"
                       src="https://images.unsplash.com/1/apple-gear-looking-pretty.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
                       alt=""
                     />
                   </div>
-                  <div class="space-y-1 w-0 flex-1">
+                  <div class="flex-1 w-0 space-y-1">
                     <h4
-                      class="text-base leading-6 font-medium text-gray-900 truncate"
+                      class="text-base font-medium leading-6 text-gray-900 truncate"
                     >
                       How to use search engine optimization to drive traffic to
                       your site
@@ -714,10 +713,10 @@
               </li>
             </ul>
           </div>
-          <div class="text-sm leading-5 font-medium">
+          <div class="text-sm font-medium leading-5">
             <a
               href="#"
-              class="text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150"
+              class="text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500"
             >
               View all posts &rarr;
             </a>
@@ -738,15 +737,15 @@
   -->
     <div
       v-if="isMobileOpened"
-      class="absolute z-1001 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+      class="absolute inset-x-0 top-0 p-2 transition origin-top-right transform z-1001 md:hidden"
     >
       <div class="rounded-lg shadow-lg">
-        <div class="rounded-lg shadow-xs bg-white divide-y-2 divide-gray-50">
-          <div class="pt-5 pb-6 px-5 space-y-6 sm:space-y-8 sm:pb-8">
+        <div class="bg-white divide-y-2 rounded-lg shadow-xs divide-gray-50">
+          <div class="px-5 pt-5 pb-6 space-y-6 sm:space-y-8 sm:pb-8">
             <div class="flex items-center justify-between">
               <div>
                 <img
-                  class="h-8 w-auto sm:h-10"
+                  class="w-auto h-8 sm:h-10"
                   src="https://res.cloudinary.com/djhqderty/image/upload/f_auto/v1599671277/subexpuesta/subexpuesta-transparente.png"
                   alt="subexpuesta.com"
                 />
@@ -754,11 +753,11 @@
               <div class="-mr-2">
                 <button
                   type="button"
-                  class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
+                  class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
                   @click="isMobileOpened = false"
                 >
                   <svg
-                    class="h-6 w-6"
+                    class="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -780,10 +779,10 @@
                 >
                   <nuxt-link
                     to="/mapa-localizaciones/"
-                    class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                    class="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                   >
                     <div
-                      class="text-base leading-6 font-medium text-gray-900"
+                      class="text-base font-medium leading-6 text-gray-900"
                       @click="isMobileOpened = false"
                     >
                       🌍 Mapa de Localizaciones
@@ -791,10 +790,10 @@
                   </nuxt-link>
                   <nuxt-link
                     to="/blog/"
-                    class="-m-3 space-x-4 flex items-center p-3 rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                    class="flex items-center p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50"
                   >
                     <div
-                      class="text-base leading-6 font-medium text-gray-900"
+                      class="text-base font-medium leading-6 text-gray-900"
                       @click="isMobileOpened = false"
                     >
                       🕵 Blog
@@ -804,7 +803,7 @@
                 <div class="text-base leading-6">
                   <a
                     href="#"
-                    class="font-medium text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150"
+                    class="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500"
                   >
                     Únete a nuestras redes sociales &rarr;
                   </a>
@@ -812,13 +811,13 @@
               </nav>
             </div>
           </div>
-          <div class="py-6 px-5 space-y-6">
+          <div class="px-5 py-6 space-y-6">
             <div class="grid grid-cols-2 gap-4">
               <a
                 href="https://www.facebook.com/subexpuesta/"
                 target="_blank"
                 rel="nofollow"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                class="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:text-gray-700"
               >
                 <img
                   class="object-contain w-10 h-10 mx-auto"
@@ -830,7 +829,7 @@
               <a
                 href="https://twitter.com/subexpuesta_com"
                 target="_blank"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                class="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:text-gray-700"
                 rel="nofollow"
               >
                 <img
@@ -842,7 +841,7 @@
               <a
                 href="https://www.instagram.com/subexpuesta_com/"
                 target="_blank"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                class="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:text-gray-700"
                 rel="nofollow"
               >
                 <img
@@ -854,7 +853,7 @@
               <a
                 href="https://telegram.me/subexpuesta"
                 target="_blank"
-                class="rounded-md text-base leading-6 font-medium text-gray-900 hover:text-gray-700 transition ease-in-out duration-150"
+                class="text-base font-medium leading-6 text-gray-900 transition duration-150 ease-in-out rounded-md hover:text-gray-700"
                 rel="nofollow"
               >
                 <img
@@ -864,24 +863,23 @@
                 />
               </a>
             </div>
-            <!-- <div class="space-y-6">
-              <span class="w-full flex rounded-md shadow-sm">
+            <!-- <div class="mt-12 space-y-6">
+              <span class="flex w-full mt-32 rounded-md shadow-sm">
                 <a
                   href="#"
-                  class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
+                  class="flex items-center justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
                 >
-                  Sign up
+                  Inicia sesión
                 </a>
               </span>
               <p
-                class="text-center text-base leading-6 font-medium text-gray-500"
+                class="text-base font-medium leading-6 text-center text-gray-500"
               >
-                Existing customer?
                 <a
                   href="#"
-                  class="text-indigo-600 hover:text-indigo-500 transition ease-in-out duration-150"
+                  class="text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500"
                 >
-                  Sign in
+                  Subir localización
                 </a>
               </p>
             </div> -->

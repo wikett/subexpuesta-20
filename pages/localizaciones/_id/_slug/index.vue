@@ -456,18 +456,15 @@ export default {
     }
   },
 
-  // jsonld() {
-  //   return {
-  //     // https://developers.google.com/search/docs/data-types/local-business
-  //     '@context': 'http://schema.org',
-  //     '@type': 'Photography Destination',
-  //     name: this.loc.titulo,
-  //     hasMap: {
-  //       '@type': 'Map',
-  //       mapType: { '@id': 'https://schema.org/VenueMap' },
-  //       url: this.$nuxt.$route.fullPath,
-  //     },
-  //   }
-  // },
+  jsonld() {
+    return {
+      // https://developers.google.com/search/docs/data-types/image-license-metadata?hl=es
+      '@context': 'https://schema.org/',
+      '@type': 'ImageObject',
+      contentUrl: this.fullCloudinary,
+      license: 'https://creativecommons.org/licenses/by-nc/4.0/',
+      acquireLicensePage: 'https://creativecommons.org/licenses/by-nc/4.0/',
+    }
+  },
 }
 </script>
