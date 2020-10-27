@@ -8,7 +8,7 @@
         <div>
           <nuxt-link to="/" class="flex">
             <img
-              class="w-auto h-8 sm:h-10"
+              class="w-auto h-12 sm:h-12"
               src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,w_148/v1599671277/subexpuesta/subexpuesta-transparente.png"
               alt="subexpuesta.com"
             />

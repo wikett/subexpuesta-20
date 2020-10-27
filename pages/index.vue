@@ -50,25 +50,128 @@
       <div
         class="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
       >
-        <img
-          class="absolute inset-0 object-cover w-full h-full"
-          src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_auto/v1541003195/subexpuesta/jcrtvlj8s3sijb6ahy6h.jpg"
-          alt="Isla de Tabarca, Alicante"
-        />
+        <nuxt-link
+          to="localizaciones/5b028026f35bbd04001f457c/cruz-bajo-la-via-lactea/"
+        >
+          <img
+            class="absolute inset-0 object-cover w-full h-full"
+            src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_auto/v1541003195/subexpuesta/jcrtvlj8s3sijb6ahy6h.jpg"
+            alt="Isla de Tabarca, Alicante"
+          />
+        </nuxt-link>
       </div>
     </main>
+    <!--
+  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
+  Read the documentation to get started: https://tailwindui.com/documentation
+-->
+    <div class="bg-white">
+      <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8 lg:py-24">
+        <div class="space-y-12">
+          <div
+            class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none"
+          >
+            <h2
+              class="text-3xl font-extrabold leading-9 tracking-tight sm:text-4xl"
+            >
+              Localizaciones destacadas
+            </h2>
+            <p class="text-xl leading-7 text-gray-500">
+              Esta es una selección de los mejores sitios para hacer fotografía
+              nocturna, de paisaje o urbana. Si pincháis en la imágen os llevará
+              al lugar exacto de donde se realizó la toma.
+            </p>
+          </div>
+
+          <ul
+            class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
+          >
+            <li v-for="(item, index) in loc" :key="index">
+              <nuxt-link :to="getSeoUrl(item._id.$oid, item.titulo)">
+                <div class="space-y-4">
+                  <div class="relative pb-2/3">
+                    <picture>
+                      <source
+                        media="(min-width:730px)"
+                        :srcset="getResponsiveImage(item.cloudinaryId, '730')"
+                      />
+                      <source
+                        media="(min-width:706px)"
+                        :srcset="getResponsiveImage(item.cloudinaryId, '706')"
+                      />
+                      <source
+                        media="(min-width:560px)"
+                        :srcset="getResponsiveImage(item.cloudinaryId, '560')"
+                      />
+                      <source
+                        media="(min-width:411px)"
+                        :srcset="getResponsiveImage(item.cloudinaryId, '411')"
+                      />
+                      <img
+                        class="absolute object-cover w-full h-full rounded-lg shadow-lg"
+                        :srcset="getResponsiveImage(item.cloudinaryId, '360')"
+                        :alt="item.titulo"
+                        :title="item.titulo"
+                        loading="lazy"
+                      />
+                    </picture>
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h2>{{ item.titulo }}</h2>
+                      <!-- <p class="text-indigo-600">Front-end Developer</p> -->
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
+
+            <!-- More people... -->
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 export default {
   async asyncData({ $content, params }) {
-    const loc = await $content('localizaciones').fetch()
+    const loc1 = await $content('localizaciones')
+      .where({ cloudinaryId: 'subexpuesta/jntbjuilmf6o3cjab96e' })
+      .fetch()
+    const loc2 = await $content('localizaciones')
+      .where({ cloudinaryId: 'subexpuesta/bhw1yyupkfqbm9yljd2v' })
+      .fetch()
+    const loc3 = await $content('localizaciones')
+      .where({ cloudinaryId: 'subexpuesta/teuyminevs0fh7mlojor' })
+      .fetch()
+    const loc4 = await $content('localizaciones')
+      .where({ cloudinaryId: 'subexpuesta/vxsoqn9kmzov123m3j5f' })
+      .fetch()
+    const loc5 = await $content('localizaciones')
+      .where({ cloudinaryId: 'subexpuesta/zc3zex6s2g2wyrrd36a7' })
+      .fetch()
+    const loc6 = await $content('localizaciones')
+      .where({ cloudinaryId: 'subexpuesta/ldqqpf78e7cnqzctwvap' })
+      .fetch()
+    const loc = []
+    loc.push(loc1[0])
+    loc.push(loc2[0])
+    loc.push(loc3[0])
+    loc.push(loc4[0])
+    loc.push(loc5[0])
+    loc.push(loc6[0])
     return { loc }
   },
-  methods: {},
-  // middleware(ctx) {
-  //   ctx.$gtm.push({ event: 'ssr' })
-  // },
+  methods: {
+    getSeoUrl(id, url) {
+      return `/localizaciones/${id}/${this.$convertSEO(url)}`
+    },
+    getResponsiveImage(cloudinaryId, size) {
+      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_${size}/v1/${cloudinaryId}`
+    },
+  },
   head: {
     title: 'Subexpuesta.com | Comunidad sobre fotografía nocturna',
     meta: [
