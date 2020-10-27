@@ -13,19 +13,6 @@ export const mutations = {
 }
 
 export const actions = {
-  nuxtServerInit({ dispatch, commit }, { res }) {
-    console.log(`-- nuxtServerInit --`)
-    // if (res && res.locals && res.locals.user) {
-    //   console.log(`res.locals: ${res.locals.user}`)
-    //   const { allClaims: claims, idToken: token, ...authUser } = res.locals.user
-
-    //   await dispatch('onAuthStateChangedAction', {
-    //     authUser,
-    //     claims,
-    //     token,
-    //   })
-    // }
-  },
   authenticateUser({ commit }, authData) {
     try {
       // this.$fireAuth
