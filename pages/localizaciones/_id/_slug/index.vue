@@ -264,6 +264,7 @@
 export default {
   async asyncData({ $content, params }) {
     const loc = await $content('localizaciones', params.id).fetch()
+    console.log(loc)
     let fullCloudinary = loc.cloudinaryId
     // if (!fullCloudinary.includes('subexpuesta')) {
     //   fullCloudinary = 'subexpuesta/' + fullCloudinary
@@ -361,11 +362,18 @@ export default {
       this.isLoaded = true
     },
     getCloudinaryUrl(idCloudinary) {
-      return this.$cloudinary().url(idCloudinary, {
-        width: 1200,
-        fetchFormat: 'auto',
-        quality: 60,
+      console.log(`getCloudinaryUrl: ${idCloudinary}`)
+      const url = this.$cloudinary.image.url(idCloudinary, {
+        crop: 'scale',
+        width: 200,
       })
+      console.log(`url: ${url}`)
+      return url
+      // return this.$cloudinary.image.url(idCloudinary, {
+      //   width: 1200,
+      //   fetchFormat: 'auto',
+      //   quality: 60,
+      // })
     },
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }

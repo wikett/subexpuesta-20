@@ -57,6 +57,8 @@ export default {
     { src: '@/plugins/vClickOutside', mode: 'client' },
     { src: '@/plugins/leaflet.js', mode: 'client' },
     { src: '@/plugins/vuelazy.js', mode: 'client' },
+    { src: '~/plugins/mapHelper.js', mode: 'client' },
+    { src: '~/plugins/myHelpers.js', mode: 'client' },
     { src: '~/plugins/seo.js' },
     '~/plugins/jsonld',
     '~/plugins/gtm',
@@ -83,6 +85,9 @@ export default {
     'cookie-universal-nuxt',
     '@nuxtjs/firebase',
   ],
+  env: {
+    gcpApi: process.env.GCP_API,
+  },
   firebase: {
     config: {
       apiKey: process.env.FIRE_APIKEY,
@@ -104,6 +109,7 @@ export default {
         ssr: false, // default
       },
       firestore: true,
+      storage: true,
     },
   },
   /*
@@ -125,11 +131,17 @@ export default {
       dev: false,
     },
   },
-  axios: {},
-  cloudinary: {
-    cloudName: 'djhqderty',
-    useComponent: false,
+  axios: {
+    credentials: false,
+    proxy: true,
   },
+  cloudinary: {
+    cloudName: process.env.CLOUDINARY_CLOUDNAME,
+  },
+  // useComponent: false,
+  // apiKey: process.env.CLOUDINARY_API_KEY,
+  // apiSecret: process.env.CLOUDINARY_API_SECRET,
+
   gtm: {
     enabled: true, // Siempre activo por si queremos debuguear en dev o stagging
     layer: 'dataLayer',

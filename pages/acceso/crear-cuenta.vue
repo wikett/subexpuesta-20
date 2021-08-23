@@ -228,6 +228,10 @@
             <span v-show="showError6" class="text-xs text-red-600"
               >* Debes validar los campos para poder crear una cuenta</span
             >
+            <span v-show="showError8" class="text-xs text-red-600"
+              >* Debes completar todos los campos para poder crear una
+              cuenta</span
+            >
           </div>
         </form>
       </div>
@@ -265,6 +269,7 @@ export default {
       showError5: false,
       showError6: false,
       showError7: false,
+      showError8: false,
     }
   },
   methods: {
@@ -335,36 +340,42 @@ export default {
       ) {
         this.showError6 = true
       } else {
-        this.showError6 = false
-        try {
-          // Register user
-          await this.$fireAuth.createUserWithEmailAndPassword(
-            this.email,
-            this.password
-          )
-          // Save user
-          const messageRef = this.$fireStore.collection('usuarios')
+        console.log(`this.username: ${this.username}`)
+        if (this.username === '' || this.password === '' || this.email === '') {
+          this.showError8 = true
+        } else {
+          this.showError6 = false
+          this.showError8 = false
           try {
-            await messageRef.add({
-              username: this.username,
-              email: this.email,
-              origin: this.como,
-            })
-            console.log(`Usuario creado correctamente`)
-            this.showError7 = false
+            // Register user
+            await this.$fireAuth.createUserWithEmailAndPassword(
+              this.email,
+              this.password
+            )
+            // Save user
+            const messageRef = this.$fireStore.collection('usuarios')
+            try {
+              await messageRef.add({
+                username: this.username,
+                email: this.email,
+                origin: this.como,
+              })
+              console.log(`Usuario creado correctamente`)
+              this.showError7 = false
+            } catch (e) {
+              console.log(e.code)
+              // alert(e)
+              // console.log(e.code)
+              // console.log(e.message)
+              return
+            }
           } catch (e) {
-            console.log(e.code)
             // alert(e)
-            // console.log(e.code)
-            // console.log(e.message)
-            return
-          }
-        } catch (e) {
-          // alert(e)
-          console.log(e.code)
-          console.log(e.message)
-          if (e.code === 'auth/email-already-in-use') {
-            this.showError7 = true
+            console.log(e.code)
+            console.log(e.message)
+            if (e.code === 'auth/email-already-in-use') {
+              this.showError7 = true
+            }
           }
         }
       }

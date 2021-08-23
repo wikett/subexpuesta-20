@@ -65,7 +65,7 @@
   Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
   Read the documentation to get started: https://tailwindui.com/documentation
 -->
-    <div class="bg-white">
+    <!-- <div class="bg-white">
       <div class="max-w-screen-xl px-4 py-12 mx-auto sm:px-6 lg:px-8 lg:py-24">
         <div class="space-y-12">
           <div
@@ -87,7 +87,7 @@
             class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
           >
             <li v-for="(item, index) in loc" :key="index">
-              <nuxt-link :to="getSeoUrl(item._id.$oid, item.titulo)">
+              <nuxt-link :to="getSeoUrl(item.slug, item.titulo)">
                 <div class="space-y-4">
                   <div class="relative pb-2/3">
                     <picture>
@@ -109,7 +109,7 @@
                       />
                       <img
                         class="absolute object-cover w-full h-full rounded-lg shadow-lg"
-                        :srcset="getResponsiveImage(item.cloudinaryId, '360')"
+                        :src="getResponsiveImage(item.cloudinaryId, '360')"
                         :alt="item.titulo"
                         :title="item.titulo"
                         loading="lazy"
@@ -120,14 +120,181 @@
                   <div class="space-y-2">
                     <div class="space-y-1 text-lg font-medium leading-6">
                       <h2>{{ item.titulo }}</h2>
-                      <!-- <p class="text-indigo-600">Front-end Developer</p> -->
                     </div>
                   </div>
                 </div>
               </nuxt-link>
             </li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+    <!--
+  This example requires Tailwind CSS v2.0+ 
+  
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/aspect-ratio'),
+    ]
+  }
+  ```
+-->
+    <div class="bg-white">
+      <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+        <div class="space-y-12">
+          <div
+            class="space-y-5 sm:space-y-4 md:max-w-xl lg:max-w-3xl xl:max-w-none"
+          >
+            <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              Localizaciones destacadas
+            </h2>
+            <p class="text-xl text-gray-500">
+              Esta es una selección de los mejores sitios para hacer fotografía
+              nocturna, de paisaje o urbana. Si pincháis en la imágen os llevará
+              al lugar exacto de donde se realizó la toma.
+            </p>
+          </div>
+          <ul
+            class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8"
+          >
+            <li>
+              <nuxt-link
+                to="https://www.subexpuesta.com/localizaciones/58356b9225fa71040084947f/faro-de-sestalella/"
+              >
+                <div class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img
+                      class="object-cover rounded-lg shadow-lg"
+                      src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_760/v1/subexpuesta/jntbjuilmf6o3cjab96e"
+                      alt="Faro de s'Estalella"
+                      loading="lazy"
+                    />
+                  </div>
 
-            <!-- More people... -->
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h3>Faro de s'Estalella</h3>
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
+            <li>
+              <nuxt-link
+                to="https://www.subexpuesta.com/localizaciones/5a0cde2a411b6a0400d61517/faro-de-kermovan/"
+              >
+                <div class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img
+                      class="object-cover rounded-lg shadow-lg"
+                      src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_760/v1/subexpuesta/bhw1yyupkfqbm9yljd2v"
+                      alt="Faro de Kermovan"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h3>Faro de Kermovan</h3>
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
+            <li>
+              <nuxt-link
+                to="https://www.subexpuesta.com/localizaciones/59b0098b4ea7f60400845c8c/toledo-sunset/"
+              >
+                <div class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img
+                      class="object-cover rounded-lg shadow-lg"
+                      src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_760/v1/subexpuesta/teuyminevs0fh7mlojor"
+                      alt="Toledo sunset"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h3>Toledo sunset</h3>
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
+            <li>
+              <nuxt-link
+                to="https://www.subexpuesta.com/localizaciones/57d293c6686a8403000d2972/azenhas-do-mar/"
+              >
+                <div class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img
+                      class="object-cover rounded-lg shadow-lg"
+                      src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_760/v1/subexpuesta/vxsoqn9kmzov123m3j5f"
+                      alt="Azenhas do Mar"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h3>Azenhas do Mar</h3>
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
+            <li>
+              <nuxt-link
+                to="https://www.subexpuesta.com/localizaciones/57a7273136517003009405db/castillo-del-berrueco/"
+              >
+                <div class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img
+                      class="object-cover rounded-lg shadow-lg"
+                      src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_760/v1/subexpuesta/zc3zex6s2g2wyrrd36a7"
+                      alt="Castillo del Berrueco"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h3>Castillo del Berrueco</h3>
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
+            <li>
+              <nuxt-link
+                to="https://www.subexpuesta.com/localizaciones/561b748a3c4b7603008cf972/calzada-de-noche/"
+              >
+                <div class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img
+                      class="object-cover rounded-lg shadow-lg"
+                      src="https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_760/v1/subexpuesta/ldqqpf78e7cnqzctwvap"
+                      alt="Calzada de noche"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6">
+                      <h3>Calzada de noche</h3>
+                    </div>
+                  </div>
+                </div>
+              </nuxt-link>
+            </li>
           </ul>
         </div>
       </div>
@@ -136,10 +303,22 @@
 </template>
 <script>
 export default {
-  async asyncData({ $content, params }) {
+  async asyncData({ $content, params, $cloudinary }) {
+    const loc = []
+    const locCloudinary = []
+    const imagen = $cloudinary.image.url('subexpuesta/jntbjuilmf6o3cjab96e', {
+      width: '360',
+      heigth: '300',
+      f: 'auto',
+      q: '50',
+    })
+    locCloudinary.push(imagen)
+
     const loc1 = await $content('localizaciones')
       .where({ cloudinaryId: 'subexpuesta/jntbjuilmf6o3cjab96e' })
       .fetch()
+    console.log(`-------- loc1 -----------`)
+    console.log(loc1)
     const loc2 = await $content('localizaciones')
       .where({ cloudinaryId: 'subexpuesta/bhw1yyupkfqbm9yljd2v' })
       .fetch()
@@ -155,21 +334,23 @@ export default {
     const loc6 = await $content('localizaciones')
       .where({ cloudinaryId: 'subexpuesta/ldqqpf78e7cnqzctwvap' })
       .fetch()
-    const loc = []
+
     loc.push(loc1[0])
     loc.push(loc2[0])
     loc.push(loc3[0])
     loc.push(loc4[0])
     loc.push(loc5[0])
     loc.push(loc6[0])
-    return { loc }
+    return { loc, locCloudinary }
   },
   methods: {
     getSeoUrl(id, url) {
       return `/localizaciones/${id}/${this.$convertSEO(url)}`
     },
     getResponsiveImage(cloudinaryId, size) {
-      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50,w_${size}/v1/${cloudinaryId}`
+      console.log(`cloudinary: ${cloudinaryId}`)
+      // https://res.cloudinary.com/djhqderty/image/upload/v1594908686/subexpuesta/tmfolfk7qfdwuctyi89t.jpg
+      return `https://res.cloudinary.com/djhqderty/image/upload/f_auto,q_50/v1/${cloudinaryId}`
     },
   },
   head: {

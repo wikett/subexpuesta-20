@@ -67,4 +67,11 @@ export const getters = {
       return false
     }
   },
+  userEmail: (state) => {
+    try {
+      return state.authUser.usuario.email
+    } catch {
+      return ''
+    }
+  },
 }

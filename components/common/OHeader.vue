@@ -129,20 +129,29 @@
                 src="~/assets/img/icons8-telegram-app-50.png"
               />
             </a>
-            <!-- <a
-              href="#"
+            <nuxt-link
+              v-if="false"
+              to="/crear-localizacion/"
               class="text-base font-medium leading-6 text-gray-500 transition duration-150 ease-in-out hover:text-gray-900 focus:outline-none focus:text-gray-900"
             >
               Subir localización
-            </a>
-            <span class="inline-flex rounded-md shadow-sm">
-              <a
-                href="#"
+            </nuxt-link>
+            <span v-if="false" class="inline-flex rounded-md shadow-sm">
+              <nuxt-link
+                v-if="!this.$store.getters.isLoggedIn"
+                to="/acceso/iniciar-sesion/"
                 class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
               >
                 Inicia sesión
-              </a>
-            </span> -->
+              </nuxt-link>
+              <nuxt-link
+                v-else
+                to="/mi-cuenta/cuenta/"
+                class="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+              >
+                Mi cuenta
+              </nuxt-link>
+            </span>
           </div>
         </div>
       </div>
@@ -863,26 +872,34 @@
                 />
               </a>
             </div>
-            <!-- <div class="mt-12 space-y-6">
+            <div class="mt-12 space-y-6">
               <span class="flex w-full mt-32 rounded-md shadow-sm">
-                <a
-                  href="#"
+                <button
+                  v-if="!this.$store.getters.isLoggedIn"
                   class="flex items-center justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  @click="navega('/acceso/iniciar-sesion/')"
                 >
                   Inicia sesión
-                </a>
+                </button>
+                <button
+                  v-else
+                  class="flex items-center justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700"
+                  @click="navega('/mi-cuenta/cuenta/')"
+                >
+                  Mi cuenta
+                </button>
               </span>
               <p
                 class="text-base font-medium leading-6 text-center text-gray-500"
               >
-                <a
-                  href="#"
+                <nuxt-link
+                  to="/crear-localizacion/"
                   class="text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500"
                 >
                   Subir localización
-                </a>
+                </nuxt-link>
               </p>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
@@ -907,6 +924,10 @@ export default {
     }
   },
   methods: {
+    navega(ruta) {
+      this.closeMenu()
+      this.$router.push(ruta)
+    },
     closeMenu() {
       this.isSolutionOpened = false
       this.isMenuOpened = false

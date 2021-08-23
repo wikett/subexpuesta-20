@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 <template>
   <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div class="py-12 bg-white">
@@ -11,15 +12,23 @@
           <p class="max-w-2xl mt-4 text-xl leading-7 text-gray-500 lg:mx-auto">
             Más de 1000
             <strong class="text-bold">localizaciones para fotografía</strong>
-            tanto nocturna, de paisaje, lightpainting o de larga duración.
-            Comparte con nuestra comunidad estos magníficos lugares.
+            tanto nocturna, de
+            <span class="cursor-pointer" @click="filtrarLocalizaciones(7)"
+              >paisaje</span
+            >, lightpainting o de larga duración. Comparte con nuestra comunidad
+            estos magníficos lugares.
           </p>
         </div>
 
-        <span class="mt-4 text-base leading-6 text-gray-500"
+        <span
+          v-if="cargandoLocalizaciones"
+          class="mt-6 text-base leading-6 text-gray-500"
+          >Cargando localizaciones...</span
+        >
+        <span v-else class="mt-6 text-base leading-6 text-gray-500"
           >Total localizaciones: {{ localizacionesList.length }}</span
         >
-        <div id="map-wrap" class="z-10" style="height: 60vh">
+        <div v-if="isReady" id="map-wrap" class="z-10" style="height: 60vh">
           <client-only>
             <l-map :zoom="6" :center="center">
               <l-tile-layer
@@ -32,9 +41,9 @@
               ></l-marker> -->
               <v-marker-cluster>
                 <l-marker
-                  v-for="(loc, index) in locations"
+                  v-for="(loc, index) in localizacionesList"
                   :key="index"
-                  :lat-lng="loc"
+                  :lat-lng="getLoc(loc)"
                   @click="showLocation(index)"
                 >
                 </l-marker>
@@ -233,12 +242,16 @@
 </template>
 
 <script>
-import jsondata from '@/assets/data/localizaciones.json'
+// import jsondata from '@/assets/data/localizaciones.json'
 
 export default {
+  asyncData(context) {
+    return { isReady: false }
+  },
   data() {
     return {
-      localizacionesList: jsondata,
+      originalLocalizaciones: null,
+      localizacionesList: null,
       center: null,
       zoom: 6,
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -256,15 +269,128 @@ export default {
       activeImage:
         'https://cdnjs.cloudflare.com/ajax/libs/galleriffic/2.0.1/css/loader.gif',
       isLoaded: false,
+      cargandoLocalizaciones: true,
     }
   },
   mounted() {
     this.center = this.$L.latLng(40.41322, -1.219482)
-    this.localizacionesList.forEach((item) => {
-      this.locations.push(this.$L.latLng(item.latitud, item.longitud))
-    })
+    // this.localizacionesList.forEach((item) => {
+    //   this.locations.push(this.$L.latLng(item.latitud, item.longitud))
+    // })
+
+    this.isReady = true
+    // this.getLocalizaciones()
+    this.getMongoLocas()
   },
   methods: {
+    getLoc(loc) {
+      return this.$L.latLng(loc.latitud, loc.longitud)
+    },
+    filtrarLocalizaciones(categoria) {
+      this.localizacionesList = this.originalLocalizaciones.filter(
+        (item) => item.categoria === categoria
+      )
+    },
+    async getMongoLocas() {
+      try {
+        this.$axios.setHeader('Content-Type', 'application/json')
+        this.localizacionesList = await this.$axios.$get(
+          '/.netlify/functions/mongo-listar'
+        )
+        this.originalLocalizaciones = this.localizacionesList
+
+        // msg.forEach((item) => {
+        //   this.localizacionesList.push(item)
+        //   this.originalLocalizaciones.push(item)
+        // })
+        this.cargandoLocalizaciones = false
+        // fetch('/.netlify/functions/hello-world', {
+        //   headers: { accept: 'Accept: application/json' },
+        // }).then((message) => console.log(message))
+      } catch (e) {
+        this.error = e.response
+        this.response = '—'
+      }
+    },
+    async getLocalizaciones() {
+      const localizacionesDetail = this.$fireStore.collection('localizaciones')
+      try {
+        const snapshot = await localizacionesDetail.get()
+        const docs = snapshot.docs
+
+        docs.forEach((item) => {
+          const valorLocalizacion = item.data()
+          this.localizacionesList.push(valorLocalizacion)
+          this.originalLocalizaciones.push(valorLocalizacion)
+          this.locations.push(
+            this.$L.latLng(
+              valorLocalizacion.loc.latitude,
+              valorLocalizacion.loc.longitude
+            )
+          )
+          // this.locations.push(this.$L.latLng(item.latitud, item.longitud))
+        })
+        // this.originalLocalizaciones = this.localizacionesList
+      } catch (e) {
+        console.error(e)
+      }
+    },
+    guardarLocalizaciones() {
+      this.localizacionesList.forEach((item) => {
+        if (item.estado === 0) {
+          const newLoc = new this.$fireStoreObj.GeoPoint(
+            item.latitud,
+            item.longitud
+          )
+
+          // Save localizacion
+          const locaRef = this.$fireStore.collection('localizaciones')
+          const newJSON = {
+            id_loc: item.id,
+            titulo: item.titulo,
+            autor: item.autor,
+            categoria: item.categoria,
+            acceso: item.acceso,
+            cloudinaryId: item.cloudinaryId,
+
+            peligrosidad: item.peligrosidad,
+            contaminacionLuminica: item.contaminacionLuminica,
+            loc: newLoc,
+            direccion: item.direccion,
+            pais: item.pais,
+            provincia: item.provincia,
+            tags: item.tags,
+            // eslint-disable-next-line new-cap
+            fechaToma: new this.$fireStoreObj.Timestamp.fromDate(
+              new Date(item.fechaToma)
+            ),
+            // eslint-disable-next-line new-cap
+            createdAt: new this.$fireStoreObj.Timestamp.now(),
+            estado: item.estado,
+          }
+          if (item.notasAdicionales) {
+            newJSON.notasAdicionales = item.notasAdicionales
+          }
+          if (item.exif) {
+            newJSON.exif_apertura = item.exif.apertura
+            newJSON.exif_balanceBlancos = item.exif.balanceBlancos
+            newJSON.exif_iso = item.exif.iso
+            newJSON.exif_marca = item.exif.marca
+            newJSON.exif_modelo = item.exif.modelo
+            newJSON.exif_objetivo = item.exif.objetivo
+            newJSON.exif_velocidad = item.exif.velocidad
+          }
+          console.log(JSON.stringify(newJSON, null, 4))
+          try {
+            locaRef.add(newJSON)
+            console.log(`Localizacion: ${item.id} creada`)
+          } catch (e) {
+            console.error(`Localizacion: ${item.id}`)
+            console.error(e.code)
+          }
+        }
+      })
+    },
     onImgLoad() {
       this.isLoaded = true
     },
@@ -280,7 +406,7 @@ export default {
         imagenCloud = 'subexpuesta/' + imagenCloud
       }
 
-      this.activeImage = this.$cloudinary().url(imagenCloud, {
+      this.activeImage = this.$cloudinary.image.url(imagenCloud, {
         crop: 'scale',
         width: 500,
         fetchFormat: 'auto',

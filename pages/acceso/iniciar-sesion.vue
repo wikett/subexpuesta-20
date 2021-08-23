@@ -91,12 +91,12 @@
             </div>
 
             <div class="text-sm leading-5">
-              <a
-                href="#"
+              <nuxt-link
+                to="/acceso/restablecer/"
                 class="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
               >
                 ¿Olvidaste tu contraseña?
-              </a>
+              </nuxt-link>
             </div>
           </div>
 
@@ -179,12 +179,12 @@
       </div>
     </div>
     <div class="mx-auto mt-12 text-sm leading-5">
-      <a
-        href="#"
+      <nuxt-link
+        to="/acceso/crear-cuenta/"
         class="font-medium text-indigo-600 transition duration-150 ease-in-out hover:text-indigo-500 focus:outline-none focus:underline"
       >
         -Registrar nueva cuenta-
-      </a>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -254,6 +254,9 @@ export default {
               )
               console.log(`user`)
               console.log(user)
+
+              // cerrar sesion
+              // signOut()
             } catch (e) {
               console.log(e.code)
               if (e.code === 'auth/wrong-password') {
