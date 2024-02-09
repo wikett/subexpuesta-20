@@ -1,13 +1,1 @@
-[dev]
-   command = "yarn dev"
 
-[build]
-  command = "yarn run build && cd functions/node-fetch && yarn"
-  functions = "functions"
-  publish = "dist"
-
-[[headers]]
-  # Define which paths this specific [[headers]] block will cover.
-  for = "/*"
-    [headers.values]
-    Access-Control-Allow-Origin = "*"
