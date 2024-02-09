@@ -39,10 +39,10 @@ export default {
         href: 'https://rsms.me/inter/inter.css',
       },
       {
-        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
-        'data-ad-client': 'ca-pub-7593479892835011',
+        src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5731349288066148',
         async: true,
-      },
+        crossorigin: 'anonymous'
+      },      
     ],
   },
   /*
